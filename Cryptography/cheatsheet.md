@@ -121,5 +121,4 @@ steghide extract -sf <IMAGE_FILE>
   extract: indicate we want to extract the message.
   -sf <IMAGE_FILE> (stegofile): specify the file to run the steganography 
 ```
------------------------------
-# SSL Certificates
+

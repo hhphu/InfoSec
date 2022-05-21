@@ -1,6 +1,6 @@
 # Administrator accounts list
+from cmath import log
 from xmlrpc.client import boolean
-
 
 adminList = [
     {
@@ -14,15 +14,36 @@ adminList = [
 ]
 
 # Build your login functions below
-userInfo = []
+userInfo = {}
+loggedIn = False
 
 
 def getCreds():
-    username = input("Enter username ")
-    passowrd = input("Enter password")
-    return userInfo.append({"username": username,
-                            "password": passowrd})
+    usernameInput = input("Enter username: ")
+    passowrdInput = input("Enter password: ")
+    userInfo.update({"username": usernameInput, "password": passowrdInput})
 
 
 def checkLogin(userInfo, adminList):
-    loggedIn = False
+    username = userInfo["username"]
+    password = userInfo["password"]
+
+    for credential in adminList:
+        if ((credential["username"] == username) and
+                (credential["password"] == password)):
+            return True
+    userInfo.clear()
+
+    return False
+
+
+while True:
+    getCreds()
+    loggedIn = checkLogin(userInfo, adminList)
+
+    if (loggedIn):
+        print("Successfully logged in.")
+        break
+    else:
+        print("Invalid username or password. Try again")
+        print("----------------------------------------")

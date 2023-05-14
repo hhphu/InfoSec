@@ -92,7 +92,7 @@ id $USER@$DOMAIN
 -------------------------------
 # Using Linux Attack Tools with Kerberos
 -------------------------------
-- When using tools from a domain-joined machine, we need to ensure our KRB5CCNAME environment variable is set to the ccache file we want to use. When attacking from a machine that is not a member of domain, we need to use ![Chisel](https://github.com/jpillora/chisel) ![proxychains](https://github.com/haad/proxychains) and edit the host file.
+- When using tools from a domain-joined machine, we need to ensure our KRB5CCNAME environment variable is set to the ccache file we want to use. When attacking from a machine that is not a member of domain, we need to use [Chisel](https://github.com/jpillora/chisel) [proxychains](https://github.com/haad/proxychains) and edit the host file.
 ```shell
 cat /etc/hosts
 172.16.1.10 inlanefreight.htb   inlanefreight   dc01.inlanefreight.htb  dc01

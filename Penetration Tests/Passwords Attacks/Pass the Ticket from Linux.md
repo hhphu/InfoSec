@@ -62,7 +62,7 @@
 - NOTE: to keep the ticket from the current session, before importing the keytab, save a copy of the ccache file present in the environment variable KRB5CCNAME
 
 2. Keytab Extract
-- Use ![KeyTabExtract](https://github.com/sosdave/KeyTabExtract) to extract valuable information from 502-type .keytab files.
+- Use [KeyTabExtract](https://github.com/sosdave/KeyTabExtract) to extract valuable information from 502-type .keytab files.
 ```shell
 python3 /opt/keytabextract.py /opt/specialfiles/$USER.keytab
 ```

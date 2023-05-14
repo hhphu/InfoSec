@@ -10,6 +10,8 @@ dir *.kirbi
 ### Rubeus - Export Tickets
 ```cmd
 Rubeus.exe dump /nowrap
+# Option
+/nowrap: Make the output easier to be copied and pasted.
 ```
 
 ### Pass the Key/OverPass the Hash

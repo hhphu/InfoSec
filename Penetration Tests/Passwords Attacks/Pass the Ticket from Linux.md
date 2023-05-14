@@ -52,7 +52,7 @@
 1. Impersonating a user wiht a keytab
 ```shell
   klist
-  klist $USER@DOMAIN -k -t /opt/specialfiles/$USER.keytab
+  kinit $USER@DOMAIN -k -t /opt/specialfiles/$USER.keytab
   klist
 ```
 - Connect to SMB as the user

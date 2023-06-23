@@ -17,5 +17,5 @@
 		4. Create a list of missed information
 		5. Expand your notes
 	```
-- Once comfortable, practive with ProLab/Endgame
+- Once comfortable, practice with ProLab/Endgame
 

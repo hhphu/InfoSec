@@ -5,4 +5,4 @@ This Repository contains all resources/notes/cheatsheet I've compiled in CyberSe
 
 - [Cryptography](./Cryptography)
 - [Penetration Tests](./Penetration%20Tests)
-- [Python](./Python)
+

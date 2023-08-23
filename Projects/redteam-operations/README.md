@@ -41,3 +41,5 @@
 - Utilized industry-standard tools like Metasploit, BurpSuite, and exploitdb, to exploit systems, successfully gaining unauthorized access to DMZ servers and devices in the MZ, uncovering other critical vulnerabilities.
 - Leveraged Hydra, John, and Hashcat to gain access to crack passwords to access systems and escalate privileges.
 - Produced meticulous assessment reports, encompassing an executive summary, testing methodology, vulnerability scores and descriptions, exposure analysis, modified exploit code, and inclusive screenshots captured during the assessment. The report served as a comprehensive deliverable, providing stakeholders with actionable insights and recommendations for effective security improvements.
+
+# [REPORT](./pj-bank-project-report.pdf) 

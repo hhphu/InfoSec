@@ -25,4 +25,4 @@ aws cloudformation describe-stacks --stack-name myStack
 ```
 
 # REPORT
-The report of this project can be found [here](./INSA-Planning-Design.docx).
+The report of this project can be found [here](./INSA-Planning-Design.pdf).

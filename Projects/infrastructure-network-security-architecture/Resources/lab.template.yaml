@@ -1,0 +1,240 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Metadata:
+    Generator: "former2"
+Description: "Create S3 buckets and Lambda functions"
+Resources:
+    LambdaFunction:
+        Type: "AWS::Lambda::Function"
+        Properties:
+            Description: "lambda function to scan files with Yara rules"
+            FunctionName: "bucket-scan-function"
+            Handler: "scan.lambda_handler"
+            Code:
+                S3Bucket: "udacity-sarchnd"
+                S3Key: "C3/lambda.zip"
+            MemorySize: 128
+            Role: !GetAtt IAMRole.Arn
+            Runtime: "python3.7"
+            Timeout: 3
+            TracingConfig:
+                Mode: "PassThrough"
+
+    LambdaFunction2:
+        Type: "AWS::Lambda::Function"
+        Properties:
+            Description: "Lambda function to match for hashlist"
+            FunctionName: "Denylist-parsing-function"
+            Handler: "index.lambda_handler"
+            MemorySize: 128
+            Role: !GetAtt IAMRole.Arn
+            Runtime: "python3.7"
+            Timeout: 3
+            TracingConfig:
+                Mode: "PassThrough"
+            Code:
+                ZipFile: |
+                    import json
+                    import boto3
+                    import hashlib
+
+                    def match_hashlist(filehash):  
+                        s3_client = boto3.client('s3')
+                        s3_clientobj = s3_client.get_object(Bucket='[ENTER THE NAME OF BUCKET]', Key='[NAME OF HASHLIST.TXT FILE]')
+                        hashlist = s3_clientobj['Body'].read().decode('utf-8')
+                        hashlist = hashlist.strip()
+                        if filehash in hashlist.split('\n'):
+                            return True
+                    def parse_sqs(event):
+                        buc = ''
+                        key = ''
+                        for each in event['Records']:
+                            data = json.loads(each['body'])
+                            buc = data['bucket']
+                            key = data['key']
+                        return buc, key
+                    def lambda_handler(event, context):
+                        print(event)
+                        print(type(event))
+                        bucket, key = parse_sqs(event)
+                        s3 = boto3.resource('s3')
+                        obj = s3.Object(bucket, key)
+                        body = obj.get()['Body'].read()
+                        hashvalue = hashlib.sha256(body).hexdigest()
+                        if match_hashlist(hashvalue) is True:
+                            print("matched for existing hash", hashvalue)
+                        else:
+                            print("no matching hash ")
+
+
+    S3Bucket:
+      Type: "AWS::S3::Bucket"
+      Properties:
+        BucketName: !Join
+          - "-"
+          - - "file-scanning-upload"
+            - !Select
+              - 0
+              - !Split
+                - "-"
+                - !Select
+                  - 2
+                  - !Split
+                    - "/"
+                    - !Ref "AWS::StackId"
+
+    S3Bucket2:
+      Type: "AWS::S3::Bucket"
+      Properties:
+        BucketName: !Join
+          - "-"
+          - - "denylist-hashfile-upload"
+            - !Select
+              - 0
+              - !Split
+                - "-"
+                - !Select
+                  - 2
+                  - !Split
+                    - "/"
+                    - !Ref "AWS::StackId"
+
+    S3Bucket3:
+      Type: "AWS::S3::Bucket"
+      Properties:
+        BucketName: !Join
+          - "-"
+          - - "clamav-definition-upload"
+            - !Select
+              - 0
+              - !Split
+                - "-"
+                - !Select
+                  - 2
+                  - !Split
+                    - "/"
+                    - !Ref "AWS::StackId"
+
+    SQSQueue:
+        Type: "AWS::SQS::Queue"
+        Properties:
+            DelaySeconds: "0"
+            MaximumMessageSize: "262144"
+            MessageRetentionPeriod: "10800"
+            ReceiveMessageWaitTimeSeconds: "0"
+            VisibilityTimeout: "30"
+            QueueName: "YaraScanQueueItems"
+
+    DocSQSSNSPolicy:
+        Type: AWS::SQS::QueuePolicy
+        Properties:
+            PolicyDocument:
+                Id: PushDocRekMessageToSQSPolicy
+                Statement:
+                    Effect: Allow
+                    Principal: "*"
+                    Action:
+                        - SQS:SendMessage
+                    Resource: !GetAtt SQSQueue.Arn  
+            Queues: 
+                - !Ref SQSQueue   
+
+
+    IAMRole:
+        Type: "AWS::IAM::Role"
+        Properties:
+            Path: "/"
+            RoleName: "BucketScan3"
+            AssumeRolePolicyDocument: "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"},\"Action\":\"sts:AssumeRole\"}]}"
+            MaxSessionDuration: 3600
+            ManagedPolicyArns:
+                - !Ref IAMManagedPolicy
+            Description: "Allows Lambda functions to call AWS services on your behalf."
+
+    IAMManagedPolicy:
+        Type: "AWS::IAM::ManagedPolicy"
+        Properties:
+            ManagedPolicyName: "bucket-scan-policy-3"
+            Path: "/"
+            PolicyDocument: !Sub |
+                {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "VisualEditor0",
+                            "Effect": "Allow",
+                            "Action": [
+                                "s3:GetObject",
+                                "sns:Publish",
+                                "kms:Decrypt",
+                                "s3:PutObjectVersionTagging",
+                                "s3:GetObjectTagging",
+                                "s3:PutObjectTagging"
+                            ],
+                            "Resource": [
+                                "arn:aws:sns:::<av-scan-start>",
+                                "arn:aws:sns:::<av-status>",
+                                "arn:aws:s3:::${S3Bucket}/*"
+                            ]
+                        },
+                        {
+                            "Sid": "VisualEditor1",
+                            "Effect": "Allow",
+                            "Action": [
+                                "logs:CreateLogStream",
+                                "logs:CreateLogGroup",
+                                "logs:PutLogEvents",
+                                "sqs:*",
+                                "s3:*"
+                            ],
+                            "Resource": "*"
+                        },
+                        {
+                            "Sid": "VisualEditor2",
+                            "Effect": "Allow",
+                            "Action": "s3:*",
+                            "Resource": "arn:aws:s3:::yara-rules/*"
+                        },
+                        {
+                            "Sid": "VisualEditor3",
+                            "Effect": "Allow",
+                            "Action": "s3:*",
+                            "Resource": "arn:aws:s3:::${S3Bucket}/*"
+                        },
+                        {
+                            "Sid": "VisualEditor4",
+                            "Effect": "Allow",
+                            "Action": "s3:*",
+                            "Resource": "arn:aws:s3:::${S3Bucket}"
+                        },
+                        {
+                            "Sid": "VisualEditor5",
+                            "Effect": "Allow",
+                            "Action": "s3:*",
+                            "Resource": "arn:aws:s3:::yara-rules"
+                        },
+                        {
+                            "Sid": "VisualEditor6",
+                            "Effect": "Allow",
+                            "Action": "s3:*",
+                            "Resource": "arn:aws:s3:::${S3Bucket2}/*"
+                        },
+                        {
+                            "Sid": "VisualEditor7",
+                            "Effect": "Allow",
+                            "Action": "s3:*",
+                            "Resource": "arn:aws:s3:::${S3Bucket2}"
+                        },
+                        {
+                            "Sid": "VisualEditor8",
+                            "Effect": "Allow",
+                            "Action": "s3:*",
+                            "Resource": "arn:aws:s3:::${S3Bucket3}/*"
+                        },
+                        {
+                            "Sid": "VisualEditor9",
+                            "Effect": "Allow",
+                            "Action": "s3:*",
+                            "Resource": "arn:aws:s3:::${S3Bucket3}"
+                        }
+                    ]
+                }

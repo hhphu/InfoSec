@@ -1,0 +1,27 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::029208010692:root"
+            },
+            "Action": "s3:PutObject",
+            "Resource": [
+                "arn:aws:s3:::file-scanning-upload-1e076ea0/*.png",
+                "arn:aws:s3:::file-scanning-upload-1e076ea0/*.jpeg",
+                "arn:aws:s3:::file-scanning-upload-1e076ea0/*.gif"
+            ]
+        },
+        {
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "s3:PutObject",
+            "NotResource": [
+                "arn:aws:s3:::file-scanning-upload-1e076ea0/*.png",
+                "arn:aws:s3:::file-scanning-upload-1e076ea0/*.jpeg",
+                "arn:aws:s3:::file-scanning-upload-1e076ea0/*.gif"
+            ]
+        }
+    ]
+}

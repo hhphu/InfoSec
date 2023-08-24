@@ -1,0 +1,11 @@
+{
+  "bucket": "file-scanning-upload-1e076ea0",
+  "key": "meter-3.jpg",
+  "yara-scan": {
+    "scan_performed": "Yes",
+    "scan_result": "Detected",
+    "detection_rule": [
+      "Udacity_malware_alert"
+    ]
+  }
+}

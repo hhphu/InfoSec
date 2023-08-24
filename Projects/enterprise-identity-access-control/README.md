@@ -35,4 +35,5 @@ aws --region=us-east-1 cloudformation create-stack --capabilities CAPABILITY_IAM
 aws --region=us-east-1 cloudformation create-stack --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND --stack-name resources --template-body file://resources.yml
 ```
 
+# REPORT
 Report of the project can be found [here](./enterprise-identity-and-access-control.pdf).

@@ -1,4 +1,5 @@
 # Security Architect
+![HeaderImage](https://media.licdn.com/dms/image/D4E12AQFD_We6L5APAw/article-cover_image-shrink_600_2000/0/1676991484108?e=2147483647&v=beta&t=a5wr0yTmC9i5qKhityROd6TDdKmP6u1jHGsZpaRki6I)
 These mini projects equip me skills and strategies to implement elements of security infrastructure design and management at an enterprise level. As a security architect, I will be charged with designing security systems to thwart malware, hacker intrusions and Denial of Service attacks. The addressed security topics is concerned with architectural and implementation skills required by a skilled cybersecurity professional for critical use-cases like identity & access management, infrastructure security, threat detection and incident response.
 
 1. [Security Architecture Planning and Design](./security-architecture-planning-design)

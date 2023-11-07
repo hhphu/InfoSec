@@ -1,0 +1,12 @@
+﻿{
+    "Description": "SAC4T4",
+    "Encrypted": false,
+    "OwnerId": "501624108697",
+    "Progress": "",
+    "SnapshotId": "snap-00a2c7b3491aa0e30",
+    "StartTime": "2023-08-25T03:10:17.509000+00:00",
+    "State": "pending",
+    "VolumeId": "vol-0ac551f00bedabfe9",
+    "VolumeSize": 8,
+    "Tags": []
+}

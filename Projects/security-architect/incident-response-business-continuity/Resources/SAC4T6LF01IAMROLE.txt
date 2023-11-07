@@ -1,0 +1,37 @@
+﻿{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:DeleteSnapshot",
+                "ec2:CreateSnapshots",
+                "ec2:CreateSnapshot"
+            ],
+            "Resource": [
+                "arn:aws:ec2:*:*:instance/*",
+                "arn:aws:ec2:*::snapshot/*",
+                "arn:aws:ec2:*:*:volume/*"
+            ]
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:DescribeImages",
+                "ec2:DeregisterImage",
+                "ec2:DescribeInstances",
+                "ec2:DescribeSnapshotAttribute",
+                "ec2:DescribeInstanceAttribute",
+                "ec2:DescribeImageAttribute",
+                "logs:*",
+                "ec2:CreateImage",
+                "ec2:DescribeSnapshots",
+                "ec2:DescribeInstanceCreditSpecifications",
+                "ec2:DescribeInstanceStatus"
+            ],
+            "Resource": "*"
+        }
+    ]
+}

@@ -1,0 +1,187 @@
+{
+    "Reservations": [
+        {
+            "Groups": [],
+            "Instances": [
+                {
+                    "AmiLaunchIndex": 0,
+                    "ImageId": "ami-048f6ed62451373d9",
+                    "InstanceId": "i-0cc39114bea09a63c",
+                    "InstanceType": "t2.micro",
+                    "KeyName": "vockey",
+                    "LaunchTime": "2023-08-25T02:49:56+00:00",
+                    "Monitoring": {
+                        "State": "enabled"
+                    },
+                    "Placement": {
+                        "AvailabilityZone": "us-east-1a",
+                        "GroupName": "",
+                        "Tenancy": "default"
+                    },
+                    "PrivateDnsName": "ip-172-31-15-32.ec2.internal",
+                    "PrivateIpAddress": "172.31.15.32",
+                    "ProductCodes": [],
+                    "PublicDnsName": "",
+                    "State": {
+                        "Code": 80,
+                        "Name": "stopped"
+                    },
+                    "StateTransitionReason": "User initiated",
+                    "SubnetId": "subnet-02a79063244b9b157",
+                    "VpcId": "vpc-0a93883e84ee508b4",
+                    "Architecture": "x86_64",
+                    "BlockDeviceMappings": [
+                        {
+                            "DeviceName": "/dev/xvda",
+                            "Ebs": {
+                                "AttachTime": "2023-08-25T02:24:49+00:00",
+                                "DeleteOnTermination": true,
+                                "Status": "attached",
+                                "VolumeId": "vol-0d363e472da76a898"
+                            }
+                        },
+                        {
+                            "DeviceName": "/dev/sda1",
+                            "Ebs": {
+                                "AttachTime": "2023-08-25T02:24:49+00:00",
+                                "DeleteOnTermination": true,
+                                "Status": "attached",
+                                "VolumeId": "vol-01b19ac3cbbbee195"
+                            }
+                        }
+                    ],
+                    "ClientToken": "Cours-EC2In-SL01OP3QS6SM",
+                    "EbsOptimized": false,
+                    "EnaSupport": true,
+                    "Hypervisor": "xen",
+                    "NetworkInterfaces": [
+                        {
+                            "Attachment": {
+                                "AttachTime": "2023-08-25T02:24:49+00:00",
+                                "AttachmentId": "eni-attach-0a3fd4d1e0fe12621",
+                                "DeleteOnTermination": true,
+                                "DeviceIndex": 0,
+                                "Status": "attached",
+                                "NetworkCardIndex": 0
+                            },
+                            "Description": "",
+                            "Groups": [
+                                {
+                                    "GroupName": "securityGroupOne",
+                                    "GroupId": "sg-09815d0ac34e0f483"
+                                }
+                            ],
+                            "Ipv6Addresses": [],
+                            "MacAddress": "02:ca:08:89:ac:e5",
+                            "NetworkInterfaceId": "eni-084330aa22ca6c8bd",
+                            "OwnerId": "501624108697",
+                            "PrivateDnsName": "ip-172-31-15-32.ec2.internal",
+                            "PrivateIpAddress": "172.31.15.32",
+                            "PrivateIpAddresses": [
+                                {
+                                    "Primary": true,
+                                    "PrivateDnsName": "ip-172-31-15-32.ec2.internal",
+                                    "PrivateIpAddress": "172.31.15.32"
+                                }
+                            ],
+                            "SourceDestCheck": true,
+                            "Status": "in-use",
+                            "SubnetId": "subnet-02a79063244b9b157",
+                            "VpcId": "vpc-0a93883e84ee508b4",
+                            "InterfaceType": "interface"
+                        }
+                    ],
+                    "RootDeviceName": "/dev/xvda",
+                    "RootDeviceType": "ebs",
+                    "SecurityGroups": [
+                        {
+                            "GroupName": "securityGroupOne",
+                            "GroupId": "sg-09815d0ac34e0f483"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "StateReason": {
+                        "Code": "Client.InstanceInitiatedShutdown",
+                        "Message": "Client.InstanceInitiatedShutdown: Instance initiated shutdown"
+                    },
+                    "Tags": [
+                        {
+                            "Key": "aws:cloudformation:stack-id",
+                            "Value": "arn:aws:cloudformation:us-east-1:501624108697:stack/Course4Resources/8a7531d0-42ee-11ee-a6fd-12b0eb390dcd"
+                        },
+                        {
+                            "Key": "aws:cloudformation:logical-id",
+                            "Value": "EC2Instance"
+                        },
+                        {
+                            "Key": "aws:cloudformation:stack-name",
+                            "Value": "Course4Resources"
+                        },
+                        {
+                            "Key": "Name",
+                            "Value": "LAMP01"
+                        },
+                        {
+                            "Key": "tag-key",
+                            "Value": "IR-Snapshot"
+                        }
+                    ],
+                    "VirtualizationType": "hvm",
+                    "CpuOptions": {
+                        "CoreCount": 1,
+                        "ThreadsPerCore": 1
+                    },
+                    "CapacityReservationSpecification": {
+                        "CapacityReservationPreference": "open"
+                    },
+                    "HibernationOptions": {
+                        "Configured": false
+                    },
+                    "MetadataOptions": {
+                        "State": "applied",
+                        "HttpTokens": "optional",
+                        "HttpPutResponseHopLimit": 1,
+                        "HttpEndpoint": "enabled",
+                        "HttpProtocolIpv6": "disabled",
+                        "InstanceMetadataTags": "disabled"
+                    },
+                    "EnclaveOptions": {
+                        "Enabled": false
+                    },
+                    "PlatformDetails": "Linux/UNIX",
+                    "UsageOperation": "RunInstances",
+                    "UsageOperationUpdateTime": "2023-08-25T02:24:49+00:00",
+                    "PrivateDnsNameOptions": {
+                        "HostnameType": "ip-name",
+                        "EnableResourceNameDnsARecord": false,
+                        "EnableResourceNameDnsAAAARecord": false
+                    },
+                    "MaintenanceOptions": {
+                        "AutoRecovery": "default"
+                    },
+                    "CurrentInstanceBootMode": "legacy-bios"
+                }
+            ],
+            "OwnerId": "501624108697",
+            "RequesterId": "043234062703",
+            "ReservationId": "r-06eb5a34b9e246b41"
+        }
+    ]
+}
+{
+    "Snapshots": [
+        {
+            "Description": "amzn2-ami-hvm-2.0.20210421.0-x86_64.xfs.gpt",
+            "Encrypted": false,
+            "OwnerId": "137112412989",
+            "Progress": "100%",
+            "SnapshotId": "snap-0d6a2ac1feca4cf17",
+            "StartTime": "2021-04-24T22:45:09.347000+00:00",
+            "State": "completed",
+            "VolumeId": "vol-0701255555092e73c",
+            "VolumeSize": 8,
+            "OwnerAlias": "amazon",
+            "StorageTier": "standard"
+        }
+    ]
+}

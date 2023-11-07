@@ -1,0 +1,15 @@
+﻿import json
+import boto3
+client = boto3.client('ec2')
+
+
+def lambda_handler(event, context):
+    custom_filter = [{
+        'Name':'tag:Suspect', 
+        'Values': ['True']}]
+    
+    response = client.describe_instances(Filters=custom_filter)
+    for r in response['Reservations']:
+        for i in r['Instances']:
+            print i['InstanceId']
+    client.modify_instance_attribute(InstanceId=i['InstanceId'],Groups=['sg-'])

@@ -12,8 +12,3 @@ This is a Module on HackTheBox platform, which covers the OSINT phase of securit
 
 This document is solely served for educational purposes. I **DO NOT** promote illegal hacking of any kinds against any companies. I solely use this to document processing of enhancing my cybersecurity skill sets.
 
-------
-# COMPANY INFORMATION
------
-1. Locations
-

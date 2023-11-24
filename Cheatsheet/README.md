@@ -1,7 +1,11 @@
 Lists of cheat sheet that are often used in CTF and Pentesting.
-- [Firewalld](./Firewalld.md)
+- [find](./find.md)
+- [firewalld](./firewalld.md)
 - [GPG](./GPG.md)
-- [Openssl](./Openssl.md)
+- [grep](./grep.md)
+- [openssl](./openssl.md)
 - [Python](./Python-Basics.md)
+- [sed](./sed.md)
 - [Stegnography](./Stegnography.md)
 - [UFW](./UFW.md)
+- [Web Attacks](./Web%20Attacks.md)

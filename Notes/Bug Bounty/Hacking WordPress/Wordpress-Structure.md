@@ -28,17 +28,17 @@ tree -L 1 /var/www/html
 
 ## Key WordPress files
 
-- `__index.php__` - homepage of WordPress
-- `__license.txt__`- contains useful information of the installed WordPress
-- `__wp-activate.php__` - used for the email activation process
-- `__wp-admin__` - contains the login page for administrator access and the backend dashboard. The login page can be located at one of the following paths:
+- **index.php** - homepage of WordPress
+- **license.txt**- contains useful information of the installed WordPress
+- **wp-activate.php** - used for the email activation process
+- **wp-admin** - contains the login page for administrator access and the backend dashboard. The login page can be located at one of the following paths:
 	- /wp-admin/login.php
 	- /wp-admin/wp-login.php
 	- /login.php
 	- /wp-login.php
 
 ## WorPress Configuration File
-- `__wp-config.php__` file contains infomratino required by WordPress to connect to the databases ( names, hosts, usernames & passwords, etc.)
+- **wp-config.php** file contains infomratino required by WordPress to connect to the databases ( names, hosts, usernames & passwords, etc.)
 
 ```php
 <?php
@@ -83,7 +83,7 @@ require_once ABSPATH . 'wp-settings.php';
 ```
 
 ## Key WordPress directories
-- `__wp-content__` is the main directory where plugins and themes are stored. Its subdirectory `__uploads__` is where uploaded files are stored.
+- **wp-content** is the main directory where plugins and themes are stored. Its subdirectory `__uploads__` is where uploaded files are stored.
 
 ```bash
 tree -L 1 /vaw/www/html/wp-content
@@ -93,7 +93,7 @@ tree -L 1 /vaw/www/html/wp-content
 └── themes
 ```
 
-- `__wp-includes__` contains everything except for the administrative comonents and teh themes that belong to the website. Thisis where core files are stored (certificates, fonts, JS files,widget, etc.)
+- **wp-includes** contains everything except for the administrative comonents and teh themes that belong to the website. Thisis where core files are stored (certificates, fonts, JS files,widget, etc.)
 
 ```bash
 tree -L 1 /var/www/html/wp-includes

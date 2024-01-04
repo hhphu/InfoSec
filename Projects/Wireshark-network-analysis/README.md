@@ -10,15 +10,14 @@ In this project, I will be using Wireshark to investigate pcapng files, analyzin
 1. How many total Packets in the pcap file
 From the menu, click `Statistics > Capture File Properties`. This will display the total packets in the pcapng file
 
-![totalPackets]()
-
+![totalPackets](https://raw.githubusercontent.com/hhphu/images/main/Wireshark%20Project/totalPackets.png)
 
 Answer: 50
 
 2. How many ARP packets?
 From the menu, click `Statistics > Protocols Hierarchy`. This will display the total ARP packets in the pcapng file.
 
-![totalARP]()
+![totalARP](https://github.com/hhphu/images/blob/main/Wireshark%20Project/arpPackets.png?raw=true)
 
 Answer: 19
 

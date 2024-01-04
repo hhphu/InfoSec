@@ -59,6 +59,8 @@ Link: <http://blog.inlanefreight.com/index.php/wp-json/>; rel="https://api.w.org
 Transfer-Encoding: chunked
 Content-Type: text/html; charset=UTF-8
 ```
+#### Another method that's only available from WP version 4.7.1 and before
+curl http://blog.inlanefreight.com/wp-json/wp/v2/users | jq
 
 ## Directory Indexing
 - To view the directory listing

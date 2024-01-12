@@ -27,3 +27,7 @@ sqlmap -u "http://www.example.com/?id=1&h=c4ca4238a0b923820dcc509a6f75849b" --ev
 ```
 
 --eval: evaluate the hash function before sending the request. In this case, it is the id that will be hashed.
+
+### Tamper script
+- One of the most popular tamper scripts between is replacing all occurrences of greater than operator (>) with NOT BETWEEN 0 AND #, and the equals operator (=) with BETWEEN # AND #. This way, many primitive protection mechanisms (focused mostly on preventing XSS attacks) are easily bypassed, at least for SQLi purposes (`--tamper=between,randomcase`)
+- To view the list of tamper script, use `--list-tampers`

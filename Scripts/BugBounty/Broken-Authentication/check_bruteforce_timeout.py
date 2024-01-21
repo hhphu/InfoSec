@@ -6,7 +6,7 @@ import requests
 url = ""
 arguments_list = sys.argv[1:]
 options_short = "u:"
-options_long = ["--url"]
+options_long = ["url="]
 
 
 try:

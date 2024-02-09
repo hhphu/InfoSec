@@ -124,12 +124,12 @@
 
 # Blind SSRF Cheatsheet
 
-### Introduction:
+## Introduction:
 
 - **Blind SSRF:** Vulnerability where SSRF is present but not displayed on the front end.
 - **Detection:** Test if the server processes requests to external resources (own services or Burp Collaborator).
 
-### Exploitation:
+## Exploitation:
 
 1. **Payload Creation:**
    - Create an HTML file (payload) for the application.

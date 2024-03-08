@@ -19,6 +19,6 @@ wpscan --url http://blog.inlanefreight.com --enumerate --api-token Kffr4fdJzy9qV
 ```
 
 - Credentials attack
-  ```bash
+```bash
 wpscan --password-attack -t 20 -U $NAME/$NAME_LIST -P $PASS/$PASS_LIST --url $TARGET --api-token $TOKEN
-  ```
+```

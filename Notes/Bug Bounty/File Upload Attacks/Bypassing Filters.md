@@ -113,3 +113,12 @@ text.jpg: GIF image data
 
 - This should allow us bypass the filters.
 
+### Overide Server configuration
+- Some applications have special configuration files created by developers wihttin individual directories in order to override or add more to the global settings. Apache servers, for example, will load a directory specific configuration from `.htaccess`. Hence, if we can overide the content of the `.htaccess` file, we can bypass the blacklisted filters.
+- For example, in Burp Suite, we can replace the values of several parameters
+```
+filenames= .htaccess
+Content-Type= text/plain
+Payload= AddType application/x-httpd-php .l33t
+```
+

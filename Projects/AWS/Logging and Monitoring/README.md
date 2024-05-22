@@ -1,6 +1,6 @@
 # AWS Security: Threat Detection, Logging and Monitoring
 
-![Header Image](https://miro.medium.com/v2/resize:fit:720/format:webp/0*GyrXkPBxbUX5kqHz.png)
+![Header Image](https://images.spiceworks.com/wp-content/uploads/2021/06/04113234/shutterstock_1530570248-1.jpg)
 
 This blog post will serve as an index table for all the notes that related to AWS Threat Detection, Logging and Monitoring. This will contains URLs to other blog posts that cover specific details, ranging from Incident Response to Logging and Monitoring services.
 

@@ -2,6 +2,12 @@
 
 ![Header Image](https://miro.medium.com/v2/resize:fit:720/format:webp/0*GyrXkPBxbUX5kqHz.png)
 
-- This contains a collections of blog posts and labs about AWS Logging and Monitoring services. Not only does it help us detect security threats and identify causes using industry best practices, it also puts an emphasis on the Shared Responsibility Model and security best practices related to IAM users and EC2 instance.
+This blog post will serve as an index table for all the notes that related to AWS Threat Detection, Logging and Monitoring. This will contains URLs to other blog posts that cover specific details, ranging from Incident Response to Logging and Monitoring services.
 
-- For more details, please read the following blog post: https://medium.com/@harry.hphu/aws-threat-detection-logging-and-monitoring-eb9d8a7221a3
+- [AWS Security Incident Response Planning](https://medium.com/@harry.hphu/aws-security-incident-response-planning-191d7c9277b7)
+- [Dealing with compromised IAM users](https://medium.com/@harry.hphu/aws-security-how-to-deal-with-compromised-iam-users-bc50614b387f)
+- [Lab — Dealing with compromised AWS IAM Users](https://medium.com/@harry.hphu/lab-dealing-with-compromised-aws-iam-users-269dc5b889e7)
+- [Securing EC2 instances in AWS](https://medium.com/@harry.hphu/securing-ec2-instances-in-aws-7c9da5f5b955)
+- [Lab — EC2 instances with key pair](https://medium.com/@harry.hphu/lab-ec2-encryption-with-key-pair-9a918fed36e7)
+- [Lab — EC2 instances monitoring](https://medium.com/@harry.hphu/lab-ec2-instances-monitoring-91d4ce6a9080)
+- [AWS GuardDuty](https://medium.com/@harry.hphu/aws-security-amazon-guardduty-7cf5d0a44e89)

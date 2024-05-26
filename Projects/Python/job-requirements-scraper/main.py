@@ -2,7 +2,7 @@ import requests, re
 from bs4 import BeautifulSoup as bs
 
 PATTERN = r'jobs/view/[^/]+-(\d+)'
-URL = "https://www.linkedin.com/jobs/search?keywords=Security%20Engineer&location=Washington%2C%20United%20States&geoId=&trk=public_jobs_jobs-search-bar_search-submit&position=1&pageNum=0"
+URL = "https://www.linkedin.com/jobs/search?keywords=Security%20Engineer&location=Los%20Angeles%2C%20California%2C%20United%20States&geoId=102448103&trk=public_jobs_jobs-search-bar_search-submit&position=1&pageNum=0"
 TEMPLATE_JOB_URL = "https://www.linkedin.com/jobs/view/__JOB_ID__"
 
 

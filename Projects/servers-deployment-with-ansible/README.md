@@ -1,14 +1,11 @@
-## Complete Cloud Lab Walkthrough
-
-In general, this document should not be needed. The following steps will guide you through stetting up the cloud lab resources in Azure in the event that students missed days or need to setup the lab all at once to use it for the upcoming project week.
-
-These are the same steps that are covered throughout the activities in the cloud weeks.
-
-**VERY IMPORTANT:** PAY ATTENTION TO THE USERS THAT YOU CREATE THROUGHOUT THE VARIOUS STEPS. THE EXERCISES BELOW PROVIDE EXAMPLE USERS, BUT MAKE SURE YOU NOTE AND USE THE USER THAT YOU CREATE.
-
----
-
+# Automate servers deployment with Ansible
 ![](https://www.redhat.com/rhdc/managed-files/ansible/Ansible_and_MicrosoftAzure.png)
+
+
+- This is my personal projects in which I use Microsoft Azure and Ansible to deploy multiple DVWA web servers.
+- The purpose of this project is to get familiar with Microsoft Azure and its services while building a secure system on the Cloud platform. Here's the architecture of the project:
+
+
 
 #### Setting up the Resource Group
 

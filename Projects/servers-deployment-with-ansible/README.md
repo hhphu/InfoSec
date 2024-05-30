@@ -9,54 +9,54 @@
 
 #### Setting up the Resource Group
 
-[Resource Group and Virtual Networking](./1/Activities/04_Virtual_Networking/Solved/README.md)
+[Resource Group and Virtual Networking](./resource-group-virtual-network.md)
 
 ---
 
 #### Setting up a Network Security Group:
 
-[Network Security Group](./1/Activities/09_Security_Groups/Solved/README.md)
+[Network Security Group](./network-security-group.md)
 
 ---
 
 #### Setting up Virtual Machines
 
-[Virtual Machine Setup](./1/Activities/12_Virtual_Computing/Solved/README.md)
+[Virtual Machine Setup](./virtual-machine-setup.md)
 
 
 #### Setting up your Jump Box Administration
 
-[Jump Box Administration](./2/Activities/06_Jumpbox_Admin/Solved/README.md)
+[Jump Box Administration](./jump-box-administration.md)
 ---
 
 #### Docker Container Setup
 
-[Docker Container Setup](./2/Activities/09_Containers/Solved/README.md)
+[Docker Container Setup](./containers.md)
 
 ---
 
 #### Setup your Provisioner
 
-[Provisioner Setup](./2/Activities/13_Provisioners/Solved/README.md)
+[Provisioner Setup](./provisioners.md)
 
 ---
 
 #### Setup your Ansible Playbooks
 
-[Ansible Playbook Setup](./3/Activities/03_Ansible_Playbooks/Solved/README.md)
+[Ansible Playbook Setup](./ansible-playbook-setup.md)
 
 
 ---
 
 #### Setting up the Load Balancer
 
-[Setting up Load balancer](./3/Activities/06_Load_Balancing/Solved/README.md)
+[Setting up Load balancer](./load-balancer-setup.md)
 
 ---
 
 #### Setting up the NSG to expose port 80
 
- [Setting up NSG Rule for DVWA Webservers](./3/Activities/09_Security_Configuration/Solved/README.md)
+ [Setting up NSG Rule for DVWA Webservers](./security-configuration.md)
  
 **Note:** With the stated configuration, you will not be able to access these machines from another location unless the security Group rule is changed.
 

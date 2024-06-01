@@ -1,3 +1,4 @@
+![](https://miro.medium.com/v2/resize:fit:720/format:webp/1*qgUUVCAtRtD3eJlqoAUPYQ.png)
 -----
 ## SIGN UP IPGEOLOCATION
 -----
@@ -46,7 +47,7 @@
 ----
 - Turn off firewall on VM
 	- `Windows Defender Firewall > Advanced Settings > Windows Defender Firewall Properties` and turn off firewalls for Domain profile, Private profile and Public profile
-- Down load the [PS script](https://github.com/hhphu/InfoSec/blob/main/Scripts/Microsoft%20Azure%20SIEM/GetEventLogs.ps1) to run on the Virtual Machine. This will catch all failed RDP attempts and store in a file called **FailedRDP.log**
+- Down load the [PS script](https://github.com/hhphu/InfoSec/blob/main/Projects/microsoft-azure-ids/GetEventLogs.ps1) to run on the Virtual Machine. This will catch all failed RDP attempts and store in a file called **FailedRDP.log**
 
 ![Run-Get-EventsLogs.png](https://miro.medium.com/v2/resize:fit:720/format:webp/1*Z8Y4wLmIOaxLbcAe2OYGiw.png)
 

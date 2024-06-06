@@ -21,7 +21,7 @@ This document is solely served for educational purposes. I **DO NOT** promote il
 1.  What are the city's coordinates where one of the company's offices, "inlanefreight.com" has its headquarters in Germany? (format: 00.0000 N, 0.0000 E)
  On the company website, `/offices` page, there's a paragraph mentioning offices in three different cities: Brighton, Oberhausen and Denver. We can look up their coordinates
 
-![offices-locations](https://raw.githubusercontent.com/hhphu/images/main/OSINT%20Corporate%20Recon/Images/office-locations.png)
+![offices-locations](./Images/office-locations.png)
 
 > ***51.4878 N, 6.8633 E***
 
@@ -33,7 +33,7 @@ This document is solely served for educational purposes. I **DO NOT** promote il
 
 For the next two questions, answers can be found on `/about-us` page
 
-![cfo-and-offices](https://raw.githubusercontent.com/hhphu/images/main/OSINT%20Corporate%20Recon/Images/cfo-and-offices.png)
+![cfo-and-offices](./Images/cfo-and-offices.png)
 
 4.  In which country is the chief financial officer located?
 > ***Germany***
@@ -67,7 +67,7 @@ This can be found on `/contact` page
 2. What is the email address for enterprise customer support?
 This one is tricky as `enterprise@inlanefreight.com` is considered incorrect answer. After careful inspect, I found the email to be a different one. I was able to obtain the correct email by hovering over the `enterprise@inlanefreight.com` email
 
-![enterprise-support-email](https://raw.githubusercontent.com/hhphu/images/main/OSINT%20Corporate%20Recon/Images/enterprise-support-email.png)
+![enterprise-support-email](./Images/enterprise-support-email.png)
 
 > ***enterprise-support@inlanefreight.com***
 
@@ -104,14 +104,14 @@ How many social networks are shown on the website of the company Inlanefreight?
 1. Find out how many nameservers are responsible for the inlanefreight.com domain and submit the number as the answer.
 - Run `dig ns inlanefreight.com` to find out the nameservers of inlanefreight.om
 
-![ilf-ns](https://raw.githubusercontent.com/hhphu/images/main/OSINT%20Corporate%20Recon/Images/ilf-ns.png)
+![ilf-ns](./Images/ilf-ns.png)
 
 > ***2***
 
 2.  Find out the FQDN of the mail server of the inlanefreight.com domain and submit it as the answer.
 This information can be obtain from the  `host inlanefreight.com` command 
 
-![ifl-mail-server](https://raw.githubusercontent.com/hhphu/images/main/OSINT%20Corporate%20Recon/Images/ifl-mail-server.png)
+![ifl-mail-server](./Images/ifl-mail-server.png)
 
 > ***mail1.inlanefreight.com***
 
@@ -121,7 +121,7 @@ This information can be obtain from the  `host inlanefreight.com` command
 whois inlanefreight.com
 ```
 
-![whois-ilf](https://raw.githubusercontent.com/hhphu/images/main/OSINT%20Corporate%20Recon/Images/whois-ilf.png)
+![whois-ilf](./Images/whois-ilf.png)
 
  > ***2420436757_DOMAIN_COM-VRSN***
 
@@ -135,7 +135,7 @@ whois inlanefreight.com
 dig txt inlanefreight.com
 ```
 
-![ilf-txt](https://raw.githubusercontent.com/hhphu/images/main/OSINT%20Corporate%20Recon/Images/ilf-txt.png)
+![ilf-txt](./Images/ilf-txt.png)
 
 > ***HTB{5Fz6UPNUFFzqjdg0AzXyxCjMZ}***
 
@@ -146,7 +146,7 @@ dig txt inlanefreight.com
 1. Investigate the website www.inlanefreight.com and find out the Apache version of the webserver and submit it as the answer. (Format: 0.0.00)
 - Run a search on [Shodan](https://www.shodan.io/), we can obtain a lot of information about the company's domain structure
 
-![shodan](https://raw.githubusercontent.com/hhphu/images/main/OSINT%20Corporate%20Recon/Images/shodan.png)
+![shodan](./Images/shodan.png)
 
 > ***2.4.29***
 
@@ -160,7 +160,7 @@ dig txt inlanefreight.com
 whois 134.209.24.248
 ```
 
-![ASN](https://raw.githubusercontent.com/hhphu/images/main/OSINT%20Corporate%20Recon/Images/ASN.png)
+![ASN](./Images/ASN.png)
 
 > ***AS14061***
 
@@ -170,7 +170,7 @@ whois 134.209.24.248
 
 5. How many JS resources are there on the Inlanefreight website?
 - Run a search on [SEOptimer.](https://www.seoptimer.com/)
-![seotimer-js-resources](https://raw.githubusercontent.com/hhphu/images/main/OSINT%20Corporate%20Recon/Images/seotimer-js-resources.png)
+![seotimer-js-resources](./Images/seotimer-js-resources.png)
 
 > ***9***
 
@@ -180,7 +180,7 @@ whois 134.209.24.248
 1. Investigate the website and find the bucket name of AWS that the company used and submit it as the answer. (Format: sub.domain.tld)
 - Inspect the `Inlanefreight-Goals` file on `/news` page, we'll see the cloud storage used.
 
-![cloud-storage](https://raw.githubusercontent.com/hhphu/images/main/OSINT%20Corporate%20Recon/Images/cloud-storage.png)
+![cloud-storage](./Images/cloud-storage.png)
 
 > ***inlanefreight-comp133.s3.amazonaws.htb***
 
@@ -191,7 +191,7 @@ What is the email address of the CEO?
 
 - Inspect the `/about-us` page, we'll see the ceo's email
 
-![ceo-email](https://raw.githubusercontent.com/hhphu/images/main/OSINT%20Corporate%20Recon/Images/ceo-email.png)
+![ceo-email](./Images/ceo-email.png)
 
 > ***jeremy-ceo@inlanefreight.com***
 
@@ -209,11 +209,11 @@ What is the email address of the CEO?
 1. Which version of WordPress is used on the Inlanefreight domain page?
 - Using `Wappalyzer`, we see the website is using Wordpress 5.6.11
 
-![wordpress-version](https://raw.githubusercontent.com/hhphu/images/main/OSINT%20Corporate%20Recon/Images/wordpress-version.png)
+![wordpress-version](./Images/wordpress-version.png)
 
 - However, consider the time of this module, the correct answer is 5.6.10. We can confirm this by checking `www.inlanefreight.com` older versions on archive.org
 
-![archive-org](https://raw.githubusercontent.com/hhphu/images/main/OSINT%20Corporate%20Recon/Images/archive-org.png)
+![archive-org](./Images/archive-org.png)
 
 - Even though we see multiple versions of Wordpress, it is evident the company always updates WordPress (based on the Wappalyzer output). Therefore, we can safely assume that the WP version is 5.6.10
 
@@ -227,10 +227,10 @@ What is the email address of the CEO?
 3.  Which WAF is being used? (Format: <name>)
 - Run a search on [shodan](https://shodan.io), I found the company was using Wordfence WAF
 
-![shodan](https://raw.githubusercontent.com/hhphu/images/main/OSINT%20Corporate%20Recon/Images/shodan.png)
+![shodan](./Images/shodan.png)
 
 - This can be confirmed on [SEOptimer](https://seoptimer.com)
-![seotimer-firewall](https://raw.githubusercontent.com/hhphu/images/main/OSINT%20Corporate%20Recon/Images/seotimer-firewall.png)
+![seotimer-firewall](./Images/seotimer-firewall.png)
 
 > ***Wordfence***
 
@@ -244,7 +244,7 @@ On the `/news` page, there is a downloadable file called `Inlanefreight-Goals`. 
 exiftool goals.pdf
 ```
 
-![leaks](https://raw.githubusercontent.com/hhphu/images/main/OSINT%20Corporate%20Recon/Images/leaks.png)
+![leaks](./Images/leaks.png)
 
 > ***HTB{1nt3rn4LL34Ks4r3C0mm0n}***
 

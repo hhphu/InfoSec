@@ -15,7 +15,7 @@
 - Firewall Configuration
 
 # Tasks
-1. Task One: Integrated Information Defense
+1. [Task One: Integrated Information Defense](Task-One)
 2. Task Two: Risk Assessment
 3. Task Three: IT System Security Baseline
 4. Task Four: Network Segmentation

@@ -1,8 +1,17 @@
-# Cybersecurity Consultant - Combat cybersecurity threats with PwC's cybersecurity team.
+# PwC - Cybersecurity Consultant 
 
 ![image](https://github.com/hhphu/InfoSec/assets/45286750/0dd52edc-c9e9-4d4f-aaa8-daffb3c69d14)
 
-
+# Descriptions
+- Completed a job simulation involving cybersecurity for PwC Digital
+   Intelligence, gaining experience in understanding and explaining the concept
+   of integrated defense.
+- Developed expertise in integrated defense strategies and their application in
+   real-world scenarios.
+- Conducted risk assessments and formulated security recommendations for a
+   client.
+- Demonstrated proficiency in cybersecurity terminology, network segmentation,
+   and firewall configuration.
 # Skills
 - Risk Mangament Frameworks
 - Principles of Defense

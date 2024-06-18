@@ -1,5 +1,11 @@
-# Cracked leaked password database
+# Goldman Sachs Software Engineering Virtual Experience Program
 
+![image](https://github.com/hhphu/InfoSec/assets/45286750/057b5933-2ac9-4545-b96e-8a97a9cb04fb)
+
+- Completed a job simulation as a Goldman Sachs governance analyst responsible for assessing IT security and suggesting improvements.
+- Identified that the company was using an outdated password hashing algorithm by cracking passwords using Hashcat.
+- Wrote a memo for my supervisor summarizing a range of proposed uplifts to increase the company’s level of password protection including extending minimum password length and using a dedicated hashing algorithm.
+  
 ## Task
 As a governance analyst it is part of your duties to assess the level of protection offered by implemented controls and minimize the probability of a successful breach. To be successful at your job you often need to know the techniques used by hackers to circumvent implemented controls and propose uplifts to increase the overall level of security in an organization. Gaining valid credentials gives the attackers access to the organization’s IT system, thus circumventing most of perimeter controls in place.
 
@@ -21,6 +27,7 @@ You must determine the following:
 ## Resource
 <details>
 	<summary> Password Dump </summary>
+	```
 	experthead:e10adc3949ba59abbe56e057f20f883e
 	interestec:25f9e794323b453885f5181f1b624d0b
 	ortspoon:d8578edf8458ce06fbc5bb76a58c5ca4
@@ -40,4 +47,5 @@ You must determine the following:
 	moodie:8d763385e0476ae208f21bc63956f748
 	nabox:defebde7b6ab6f24d5824682a16c3ae4
 	bandalls:bdda5f03128bcbdfa78d8934529048cf
+	```
 </details>

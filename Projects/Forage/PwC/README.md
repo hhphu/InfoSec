@@ -16,6 +16,6 @@
 
 # Tasks
 1. [Task One: Integrated Information Defense](Task-One)
-2. Task Two: Risk Assessment
-3. Task Three: IT System Security Baseline
-4. Task Four: Network Segmentation
+2. [Task Two: Risk Assessment](Task-Two)
+3. [Task Three: IT System Security Baseline](Task-Three)
+4. [Task Four: Network Segmentation](Task-Four)

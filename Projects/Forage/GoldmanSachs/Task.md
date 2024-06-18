@@ -18,7 +18,7 @@ You must determine the following:
 - What can you tell about the organization’s password policy (e.g. password length, key space, etc.)?
 - What would you change in the password policy to make breaking the passwords harder? 
 
-## Resource
+## Resources
 <details>
 	<summary> Password Dump </summary>
 
@@ -45,3 +45,10 @@ You must determine the following:
   
 	
 </details>
+
+
+- [Cracking passwords explained](https://arstechnica.com/information-technology/2013/05/how-crackers-make-minced-meat-out-of-your-passwords/)
+- [Password Salting](https://arstechnica.com/information-technology/2013/05/how-crackers-make-minced-meat-out-of-your-passwords/)
+- [Hash Functions](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
+- [Passwords Cracing Tools](https://en.wikipedia.org/wiki/Password_cracking#Software)
+- [Password Strenth Checker](https://howsecureismypassword.net/)

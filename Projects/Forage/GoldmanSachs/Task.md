@@ -52,3 +52,10 @@ You must determine the following:
 - [Hash Functions](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
 - [Passwords Cracing Tools](https://en.wikipedia.org/wiki/Password_cracking#Software)
 - [Password Strenth Checker](https://howsecureismypassword.net/)
+
+## Cracking the passwords
+- For this project, I will be using **John the Ripper** to bruteforce the hashes in the file (`passwd_dump.txt`).
+
+```bash
+	john passwd_dump.txT
+```

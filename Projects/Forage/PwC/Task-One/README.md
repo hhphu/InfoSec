@@ -44,3 +44,5 @@ Based on the key principles of defense, what basic options does Boldi AG have fo
 
 ## Additional Resources
 [PwC's The A-Z of tech podcast: C for Cyber Security](https://open.spotify.com/episode/7E0ifCSF40fC7dAIInoVs3)
+[Key Principles of Defense](https://cdn.theforage.com/vinternships/companyassets/4sLyCPgmsy8DA6Dh3/Key%20Principles%20of%20Defense.pdf)
+[Responding to the Threat of Human - Operated Ransomware Attacks](https://cdn.theforage.com/vinternships/companyassets/4sLyCPgmsy8DA6Dh3/Responding-to-growing-human-operated-ransomware.pdf)

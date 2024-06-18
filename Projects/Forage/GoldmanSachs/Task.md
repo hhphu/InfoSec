@@ -60,7 +60,8 @@ You must determine the following:
 	john --format=Raw-MD5  passwd_dump.txt
 ```
 
-- - This is how it should look like.
+- This is how it should look like.
 
 ![image](https://github.com/hhphu/InfoSec/assets/45286750/b162dc28-ab2a-42b6-8984-7b981b3eff40)
 
+# [View Reports](goldman-sachs-security-report.pdf)

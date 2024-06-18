@@ -1,4 +1,4 @@
-# Cybersecurity - Combat cybersecurity threats with PwC's cybersecurity team.
+# Cybersecurity Consultant - Combat cybersecurity threats with PwC's cybersecurity team.
 
 ![image](https://github.com/hhphu/InfoSec/assets/45286750/0dd52edc-c9e9-4d4f-aaa8-daffb3c69d14)
 

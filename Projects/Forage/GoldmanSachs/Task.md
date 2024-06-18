@@ -57,5 +57,5 @@ You must determine the following:
 - For this project, I will be using **John the Ripper** to bruteforce the hashes in the file (`passwd_dump.txt`).
 
 ```bash
-	john passwd_dump.txT
+	john --format=Raw-MD5  passwd_dump.txt
 ```

@@ -41,6 +41,8 @@ Our Cybersecurity team will include your findings in the final pitch presentatio
 ### Part 2: 
 Based on the key principles of defense, what basic options does Boldi AG have for limiting or containing damage from risk? 
 
+# [Presentations](integrated-information-defense.pdf)
+
 
 ## Additional Resources
 [PwC's The A-Z of tech podcast: C for Cyber Security](https://open.spotify.com/episode/7E0ifCSF40fC7dAIInoVs3)

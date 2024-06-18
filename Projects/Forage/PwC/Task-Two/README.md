@@ -20,9 +20,13 @@ Does any of this present an information security concern? Please explain your an
 
 ## Additional Resources
 [PwC’s The global realities of Cybersecurity podcast: Third party risk management](https://open.spotify.com/episode/1bYRANAkPljjQgophsF7u5)
+
 [PwC’s The global realities of Cybersecurity podcast: The cyber threat landscape](https://open.spotify.com/episode/0eaifbEEmcnboh1K6JlC0f)
+
 [Qualitative Assessments](https://cdn.theforage.com/vinternships/companyassets/4sLyCPgmsy8DA6Dh3/Qualitative%20Assessments.pdf)
+
 [Quantitative Assessments](https://cdn.theforage.com/vinternships/companyassets/4sLyCPgmsy8DA6Dh3/Quantitative%20Assessments.pdf)
+
 [Root Cause Analysis](https://cdn.theforage.com/vinternships/companyassets/4sLyCPgmsy8DA6Dh3/Root%20Cause%20Analysis.pdf)
 
 

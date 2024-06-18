@@ -22,11 +22,11 @@ You're about to meet with our Cybersecurity team to set up workflows for prepari
 ```
 
 A bit surprised, you and Stefan call back to remind Boldi AG management of the absolute minimum of information security best practices:
+- physically protect information systems
+- control access by all users
+- control disclosure and disposal of information
+- train all staff regularly
 
-physically protect information systems
-control access by all users
-control disclosure and disposal of information
-train all staff regularly
 To wrap up the call, you explain that in a broader sense information security must be actively managed. A risk management framework can provide top-down guidance to organisations in setting the necessary organisational attitude and mindset.
 
 

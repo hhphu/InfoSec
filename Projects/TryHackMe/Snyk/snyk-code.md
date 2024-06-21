@@ -33,6 +33,7 @@ AI-Generated codes can introduce security risks. Hence it is important to audit 
 	- Efficiency gains: the time saved by developers and security team in identifying & addressing vulnerabilities through automated scans and integrations. 
 	- Preventive savings: Estimate the costs of potential security breaches that were avoided due to proactive vulnerability management. 
 	- ROI formula: use the following formula to calculate ROI
+
    		![image](https://github.com/hhphu/InfoSec/assets/45286750/49c292f7-074d-43ff-bef6-a282ea43a588)
 
 

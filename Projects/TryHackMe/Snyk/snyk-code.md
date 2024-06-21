@@ -32,7 +32,8 @@ AI-Generated codes can introduce security risks. Hence it is important to audit 
 	- Cost reduction: Calculate the costs associated with security before vs after the implementation (remediation, fines, downtime, etc.)
 	- Efficiency gains: the time saved by developers and security team in identifying & addressing vulnerabilities through automated scans and integrations. 
 	- Preventive savings: Estimate the costs of potential security breaches that were avoided due to proactive vulnerability management. 
-	- ROI formula: use the following formula to calculate ROI ![](https://tryhackme-images.s3.amazonaws.com/user-uploads/600495397be6737041128e4a/room-content/04231fc8f30425714af6631f4c43d8cd.png)
+	- ROI formula: use the following formula to calculate ROI
+  		![](https://tryhackme-images.s3.amazonaws.com/user-uploads/600495397be6737041128e4a/room-content/04231fc8f30425714af6631f4c43d8cd.png)
 
 
 ## ANSWER THE QUESTIONS

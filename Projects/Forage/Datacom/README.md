@@ -1,4 +1,4 @@
-# DATACOM
+# DATACOM - Cybersecurity
 
 ![image](https://github.com/hhphu/InfoSec/assets/45286750/18b1d717-717e-4cff-9d20-f639d7ff55f8)
 
@@ -20,3 +20,5 @@
 # Tasks
 - [Task One](Task-One)
 - [Task Two](Task-Two)
+
+# [Certificate](https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Datacom/yTszJTvkHFBH6zAn3_Datacom_8GHDiWCsiv8J56r2A_1719043401265_completion_certificate.pdf)

@@ -11,5 +11,7 @@ This pathway provides hands on access with common misconfigurations across AWS e
 - exploiting weaknesses in the most common AWS services including S3, EC2, VPC and mo
 
 # Table of Contents
+- [Introduction to IAM](introduction-to-iam)
+- [Introduction to AWS](introduction-to-aws)
 - [AWS: Cloud 101](aws-cloud-101.md)
-- AWS Basic Concepts
+- [AWS Basic Concepts](aws-basic-concepts.md)

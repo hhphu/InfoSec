@@ -13,5 +13,4 @@ This pathway provides hands on access with common misconfigurations across AWS e
 # Table of Contents
 - [Introduction to IAM](introduction-to-iam)
 - [Introduction to AWS](introduction-to-aws)
-- [AWS: Cloud 101](aws-cloud-101.md)
-- [AWS Basic Concepts](aws-basic-concepts.md)
+

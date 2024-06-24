@@ -34,6 +34,11 @@ Actions consist of a service and an API call. Examples:
 
 ## Principal
 - Only required for resource policies, not applicable to identities-based IAM Principal.
+- If the principal is *, the policy applies to anyone or all AWS customers.
+
+## Conditions
+- Optional element in a policy.
+- Condition statements have special operators that are used to evaluate the conditions (StringEquals, StringNotEquals, StringNotLike, StringLikeIfExists, etc.)
 
 
 -----
@@ -60,7 +65,7 @@ aws s3api lists-buckets
 We now retrieve the whole name of the bucket. Run the following command with the bucket name
 ```bash
 aws s3api get-bucket-policy --bucket $BUCKET_NAME
-```
+``
 
 ![image](https://github.com/hhphu/InfoSec/assets/45286750/3cfd24df-cb06-4465-a686-3be06b0fe365)
 
@@ -91,5 +96,29 @@ aws s3api get-bucket-policy --bucket $BUCKET_NAME
 `-> N`
 
 - Look in your account. What is the Principal that is allowed to assume the OrganizationAccountAccessRole role?
+Run the following command to retrieve the **OrganizationAccountAccessRole**
+```bash
+aws iam get-role --role OrganizationAccountAccessRole
+```
 
-`-> `
+![image](https://github.com/hhphu/InfoSec/assets/45286750/ba13549a-4c25-4932-8095-46673e8685f2)
+
+`-> "AWS": "arn:aws:iam::116457965582:root"`
+
+- Given the Statement, the Glue Service, running in vpc-12345, can write an object to the my-logs-bucket? (T/F)
+```bash
+{
+  "Effect": "Deny",
+  "Principal": "*",
+  "Action": "s3:PutObject",
+  "Resource": "arn:aws:s3:::my-logs-bucket/AWSLogs/AccountNumber/*",
+  "Condition": {
+    "StringNotEquals": {
+      "aws:SourceVpc": "vpc-abcdef2",
+      "aws:PrincipalServiceName": "glue.amazonaws.com"
+    }
+  }
+}
+```
+`-> F`
+

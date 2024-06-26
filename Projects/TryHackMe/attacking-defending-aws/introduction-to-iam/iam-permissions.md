@@ -63,6 +63,7 @@ Run the following command to list the s3 buckets
 aws s3api lists-buckets
 ```
 We now retrieve the whole name of the bucket. Run the following command with the bucket name
+
 ```bash
 aws s3api get-bucket-policy --bucket $BUCKET_NAME
 ``

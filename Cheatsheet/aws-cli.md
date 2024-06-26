@@ -30,3 +30,50 @@ aws iam list-groups
 ```bash
 aws iam get-group --group-game $GROUP_NAME
 ```
+## IAM Credentials
+### API Access Keys
+- Set Acccess Key active/inactive
+```bash
+# Set inactive
+aws iam update-access-key --access-key-id $ACCESS_KEY_VALUE --status Inactive
+
+# Set active
+aws iam update-access-key --access-key-id $ACCESS_KEY_VALUE --status Active
+```
+- Delete an Access Key
+```bash
+aws iam delete-access-key --access-key-id $ACCESS_KEY_VALUE 
+```
+- Create a long-term Access Key
+```bash
+aws iam create-access-key --user-name $USERNAME
+```
+- To generate a Session Key
+```bash
+aws sts get-session-token
+```
+
+### MFA
+- Check if user has MFA enabled
+```bash
+aws iam list-mfa-devices --user-name $USERNAME
+```
+## IAM Permissions
+### IAM Policy
+- List policy
+```bash
+aws iam list-policy
+```
+- Retrieve a policy
+```bash
+aws iam get-policy --policy-arn $POLICY_ARN
+```
+## S3
+- List S3 buckets
+```bash
+aws s3api list-buckets
+```
+- Retrieve a bucket policy
+```bash
+aws s3api get-buket-policy --bucket $BUCKET_NAME
+```

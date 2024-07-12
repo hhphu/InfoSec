@@ -205,7 +205,7 @@ aws ec2 run-instances --image-id $IMAGE_ID --instance-type t3a.micro --key-name 
 - ssh into the machine
 
 ```bash
-ssh -i keyoair.pem
+ssh -i keypair.pem
 ```
 
 
@@ -233,4 +233,9 @@ ssh -i keyoair.pem
 - **What AWS CLI command can you run to dump an S3 bucket in its entirety?**
 
 -> `aws s3 sync`
+
+- **What use of S3 means that it can involve more than data exposure only (e.g., code execution, etc.)?**
+
+-> `AWS Service Substrate`
+
 

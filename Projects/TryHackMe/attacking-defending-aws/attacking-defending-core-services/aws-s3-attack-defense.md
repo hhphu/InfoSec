@@ -179,11 +179,18 @@ aws s3 sync s3://$BUCKET_NAME . --no-sign-request
 ```bash
 aws ec2 create-restore-image-task --object-key $AMI_OBJECT_ID --bucket assets.bestcloudcompany.org --name $UNIQUE_NAME
 ```
+
+![image](https://github.com/user-attachments/assets/f644fa91-a500-4900-a574-be4fd95f22e6)
+
+
 - Create AWS-generated SSH key pare and store it on the attacking machine
 
 ```bash
 aws ec2 create-key-pair --key-name $KEY_NAME --query "KeyMaterial" --output text > ~/.ssh/keypair.pem
 ```
+
+![image](https://github.com/user-attachments/assets/560aa478-6b67-4bd1-8d02-1a08496214c2)
+
 
 - Create a subnet to deploy the instance
 
@@ -200,6 +207,9 @@ aws ec2 describe-security-groups
 
 ```bash
 aws ec2 run-instances --image-id $IMAGE_ID --instance-type t3a.micro --key-name kepari.pem --subnet-id $SUBNET_ID --security-group-od $SECURITY_GROUP_ID
+
+# Run the following command to retrieve the AMI_ID
+aws ec2 describe-images --filters "Name=name,Values=$UNIQUE_NAME"
 ```
 
 - ssh into the machine

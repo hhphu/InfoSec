@@ -192,12 +192,12 @@ aws ec2 create-key-pair --key-name $KEY_NAME --query "KeyMaterial" --output text
 ![image](https://github.com/user-attachments/assets/560aa478-6b67-4bd1-8d02-1a08496214c2)
 
 
-- Create a subnet to deploy the instance
+- Retrieve a subnet to deploy the instance
 
 ```bash
 aws ec2 describe-subnets
 ```
-- To laucnh an EC2 instance from the genetrated AMI above, we neee a security group that allows SSH access
+- To laucnh an EC2 instance from the genetrated AMI above, we need a security group that allows SSH access
 
 ```bash
 aws ec2 describe-security-groups
@@ -215,8 +215,11 @@ aws ec2 describe-images --filters "Name=name,Values=$UNIQUE_NAME"
 - ssh into the machine
 
 ```bash
-ssh -i keypair.pem
+ssh -i keypair.pem $PUBLIC_IP_ADDRESS
 ```
+
+![image](https://github.com/user-attachments/assets/6c9270fd-8882-479a-a5d0-7cb2acefa7bd)
+
 
 
 # ANSWER THE QUESTIONS
@@ -248,4 +251,22 @@ ssh -i keypair.pem
 
 -> `AWS Service Substrate`
 
+- **What service uses Amazon Machine Images and often uses S3 as storage for the images?**
 
+-> `EC2`
+
+- **What is the username for the default WordPress user on the AMI we identified?**
+
+Once SSHed into the instance, we see a file name "Bitnami_credentials". This is where we find the username and password for the Wordpress
+
+-> `user`
+
+- **What is the password for the default WordPress user on the AMI we identified?**
+
+-> `nd4lR0IQ43Hd`
+
+- **What is the flag in the WordPress profile of the user?**
+
+WIth the obtained credentials, log in and we can find the flag.
+
+-> `47e94f90-cbb7-4c6a-aacc-f6ff765dc54a`

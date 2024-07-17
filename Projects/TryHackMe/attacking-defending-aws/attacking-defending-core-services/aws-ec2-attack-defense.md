@@ -116,6 +116,39 @@ cat /snapshot-recovery/flag.txt
 
 ![image](https://github.com/user-attachments/assets/49e0eda7-65ff-4c5d-9657-e6aebd2b3ed3)
 
+## EC2 Configuration
+- Retrieve AMI information
+
+```bash
+aws ec2 describe-images --owners $OWNER_ID
+```
+
+![image](https://github.com/user-attachments/assets/8d14c817-f79f-43bf-b763-cd9c984fecc5)
+
+
+- UserData allows uers to configure EC2 instances at launch (customize environments, settings, etc.)
+- If UserData starts with `#!/bin/bash`, it is considered a script and will be executed by [cloud-init](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html)
+- To get the user-datam, run:
+
+```bash
+curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/user-data
+```
+
+OR
+
+look in `/var/lib/cloud/instance/scripts/part-001`
+
+- SImilar to the above cases, we need to request a token to retrieve any information
+
+```bash
+TOKEN=$( curl -s -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds:21600")
+
+instance_id=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.254/latest/meta-data/instance-id)
+
+aws ec2 describe-instance-attribute --attribute userData --instance-id $instance_id --region us-east-1 --query UserData --output text | base64 -d
+```
+
+![image](https://github.com/user-attachments/assets/8b3d23e1-da72-499a-ac30-96d5ce242030)
 
 
 

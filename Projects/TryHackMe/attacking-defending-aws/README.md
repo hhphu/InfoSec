@@ -13,3 +13,4 @@ This pathway provides hands on access with common misconfigurations across AWS e
 # Table of Contents
 - [Introduction to AWS](introduction-to-aws)
 - [Introduction to IAM](introduction-to-iam)
+- [Attacking & Defending core services](attacking-defending-core-services)

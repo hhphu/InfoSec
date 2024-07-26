@@ -65,7 +65,7 @@ aws ec2 authorize-security-group-ingress --protocol all -port 0-65535 --cidr 0.0
 - Now we have to modify the NACLs to allow access to the resources.
 
 ```bash
-aws ec2 describe-network-acls ? nacls.json
+aws ec2 describe-network-acls > nacls.json
 ```
 ![image](https://github.com/user-attachments/assets/8d937e40-daf3-4d24-8e1c-ed2a5932fdaa)
 

@@ -70,8 +70,9 @@ quiet_riot --scan 5
 ```
 
 ## Enumerat Root User Email Adadress
+- AWS S3 ACLs policy can be used to place email addresses that correspond to potential root user email addresses.
 ```bash
 quiet_riot --s 4
 ```
-
+- For this option, we need a rootuser.txt to enumerate. This process may take a while. Hence, it's best to perform it once we found a list of usernames.
 

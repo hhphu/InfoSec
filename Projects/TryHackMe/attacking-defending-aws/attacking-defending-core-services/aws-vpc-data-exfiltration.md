@@ -1,4 +1,4 @@
-# AWS VPC - Dta Exfiltration
+# AWS VPC - Data Exfiltration
 
 ## Assing a public IP address on the Target Instance
 1. To allocate a new public IP address to the EC2 Instance in this account.

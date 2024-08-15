@@ -1,2 +1,12 @@
 # AIG - Shields Up: Cybersecurity
-As an Information Security Anaylst, 
+
+
+# Skills
+- Vulnerability Triage
+- Security Advisory
+- Security Engineering
+- Python
+
+# Tasks
+- [Task One](Task-One)
+- [Task One](Task-Two)

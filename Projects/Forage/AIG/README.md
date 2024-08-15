@@ -9,4 +9,4 @@
 
 # Tasks
 - [Task One](Task-One.md)
-- [Task One](Task-Two.md)
+- [Task Two](Task-Two.md)

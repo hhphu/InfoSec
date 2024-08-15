@@ -11,3 +11,8 @@ First, conduct your research on the vulnerability using the “CISA Advisory" re
 Next, analyze the “Infrastructure List” below to find out which infrastructure may be affected by the vulnerability, and which team has ownership.
 
 ![image](https://github.com/user-attachments/assets/b5a6bcc5-06e3-4b9d-81f4-21300d543115)
+
+## Draft your advisory email below
+To finish this task, draft an advisory email to alert the infrastructure owner of the seriousness of this vulnerability. 
+
+# [View email](AIG-advisory-email.pdf)

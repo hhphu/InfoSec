@@ -8,5 +8,5 @@
 - Python
 
 # Tasks
-- [Task One](Task-One)
-- [Task One](Task-Two)
+- [Task One](Task-One.md)
+- [Task One](Task-Two.md)

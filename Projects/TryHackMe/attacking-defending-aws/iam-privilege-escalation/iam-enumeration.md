@@ -37,6 +37,10 @@ aws sts get-access-key-info --access-key-id $ACCESS_KEY_ID
       }] 
     }
 ```
+- To enumerate an IAM Principal via resource policy:
+	1. Create the resource that supports a resource-based policy
+	2. Update it to allow access for the Principal you want to test whether it exists
+	3. If !exists -> error message. Else: the update is implemented. 
 
 ## Enumerate IAM Users and Roles
 - Quiet Riot is a tool used for unauthenticated enumeration of AWS/Azure Active Directory/Google Workspace users/principal. [Github](https://github.com/righteousgambit/quiet-riot)

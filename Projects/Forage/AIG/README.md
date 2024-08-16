@@ -17,17 +17,3 @@
 # Tasks
 - [Task One](Task-One.md)
 - [Task Two](Task-Two.md)
-
-# Interview tip
-“Why are you interested in this role?”
-
-I recently participated in AIG's job simulation on the Forage platform, gaining
-valuable insights into what it's like to be part of a cybersecurity team at
-AIG. 
-I worked on a project to create a cyber threat analysis simulation, delving into
-the possible vulnerabilities and how to fix them. I practiced using tools and
-languages relevant to cybersecurity such as Python, building my skills in a
-real-world context. 
-This experience confirmed my passion for addressing cybersecurity challenges,
-and I'm enthusiastic about applying these skills on AIG's cybersecurity team to
-contribute to solving real-world problems.

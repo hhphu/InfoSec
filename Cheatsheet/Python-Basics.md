@@ -4,17 +4,14 @@
 ```python
 int_variable = 10
 ```
-
 * Floats
 ```python
 float_variable = 1.25
 ```
-
 * Booleans
 ```python
 boolean_variable = True
 ```
-
 * Strings
 ```python
 string_variable = "Hello World!"

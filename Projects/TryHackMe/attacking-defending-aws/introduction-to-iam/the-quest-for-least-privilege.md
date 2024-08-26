@@ -100,16 +100,21 @@ We also need to add two resources to the S3 statement. The first statement refer
 
 # ANSWER THE QUESTION 
 - **If you are denied access while you have this policy, what type of policy is blocking you?**
+  
 `-> Sevice Control Polocy`
 
-**What action is needed in place of XXX?**
+- **What action is needed in place of XXX?**
+  
 `-> s3`
 
--**What is the redacted EC2 Action required in place of YYY?**
+- **What is the redacted EC2 Action required in place of YYY?**
+  
 `-> Describe`
 
--**What is the redacted S3 Action required in place of XXX?**
+- **What is the redacted S3 Action required in place of XXX?**
+
 `-> List`
 
 - **What is the element needed in place of XXXX to represent the AWS Region (Singapore)?**
+
 `-> ap-southeast-1`

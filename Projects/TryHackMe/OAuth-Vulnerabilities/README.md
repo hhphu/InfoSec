@@ -1,6 +1,10 @@
 # OAuth Vulnerabilities
 
-![image]()
+<img src="https://tryhackme-images.s3.amazonaws.com/room-icons/62a7685ca6e7ce005d3f3afe-1721736252781" width="500px" height="500px" align-item="center"/>
+
+
+## URL
+https://tryhackme.com/r/room/oauthvulnerabilities
 
 ## Key Concepts
 **Resource Owner**

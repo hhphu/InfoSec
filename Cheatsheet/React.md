@@ -1,3 +1,7 @@
+# React Cheat Sheet
+
+# React State
+## Arrays in React States
 ### Add an item to array
 - We replace the previous array with a new array that includes the item to be added.
 - we use spread syntax to copy the old array to the new one

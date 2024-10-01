@@ -1,6 +1,13 @@
 # Multi-Factor Authentication
 -----
-- URL: https://tryhackme.com/r/room/multifactorauthentications
+Multi-Factor Authentication (MFA) plays an important role in modern-day applications. Instead of just relying on a password, MFA throws in extra layers of defense. Basically, MFA is a combination of different checks. It might be something you know (like a password), something you have (like your smartphone), and something you are (like a fingerprint). By using these layers, MFA makes it much tougher for threat actors to access user accounts or applications.
+
+**Objectives**
+- Understand the operational principles of MFA and its significance in strengthening an application's security posture.
+- Explore the different types of authentication factors used in MFA setups.
+- Gain insights into practical scenarios where MFA is implemented to protect sensitive data and systems.
+
+**URL:** https://tryhackme.com/r/room/multifactorauthentications
 
 
 ## How MFA works
@@ -46,10 +53,21 @@
 - Due to insecure coding or logic flaws, the applications expose the requests to the users, hence revealing the MFA codes.
 - Hence, it is worth checking out the network tabs to see what the list of all requests and responses of the applications. If lucky, one might spot an XHR request which includes the 2FA code.
 
+**Exercise:**
+- First log into `http://mfa.thm/labs/first` using the provided credentials - `thm@mail.thm:test123`
+- Once on the `mfa` page, inspect the Network tab in the Developer tool to retrieve the security code.
+
+![](https://tryhackme-images.s3.amazonaws.com/user-uploads/645b19f5d5848d004ab9c9e2/room-content/645b19f5d5848d004ab9c9e2-1724158892046.png)
+
 ### Insecure Coding
 - A lot of applications allow users to access resources without having the users to input the 2FA codes (even though they are prompted). This is due to the logic flaws in the applications.
 - In the following example, after entering the credentials, we're prompted to enter 2FA codes. Since we know the url of the resource (/dashboard), we can try a GET request to `http://mfa.thm/labs/second/dashboard` 
 - As expected, we get access to the dashboard without knowing what the security code is
+
+**Exercise:**
+- First log into `http://mfa.thm/labs/second` using the provided credentials - `thm@mail.thm:test123`
+- Since we already know the url of the dashboard, which is `http://mfa.thm/labs/second/dashboard`, we can send a **GET request** for the `url.` without entering the Security code
+- As predicted, we can get access to the dashboard without entering the security code.
 
 ## Brute Force OTP
 - Depending on the applications, we can write a Python script to brutefore the OTP
@@ -154,3 +172,30 @@ try_until_success()
 ```
 
 - The script helps us log in once it finds the correct 2FA codes, which in return prints out the session cookie. We can use this cookie to log in.
+
+---------------
+# ANSWER THE QUESTIONS
+**When logging in to the application, you receive an SMS on your phone containing the OTP. What authentication factor is this?**
+
+`-> something you have`
+
+**Is MFA an important factor in keeping our online and offline activities safe from threat actors? (yea/nay)**
+
+`-> yea`
+
+**What can be implemented to help prevent brute-forcing OTPs?**
+
+`-> rate limiting`
+
+**OTP Leakage: What is the flag in the dashboard? **
+
+`-> 904c8ac84e44f0ba942e9e11ee7037b8`
+
+**Insecure Coding: What is the flag in the dashboard? **
+
+`-> 87880e9d27001affdff90989f351c46`
+
+**Beating the Auto-Logout Feature: What is the flag in the dashboard? **
+
+`-> 20548e076dbb9ba30c9d94ae4aceb38e`
+

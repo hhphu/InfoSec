@@ -4,7 +4,7 @@ This contains a lists of problems that I've done to prepare for coding interview
 
 - [Two Sum](./two-sum.md)
 - [Roman to Integer](./roman-to-integer.md)
-- [Palindrome Number]
+- [Palindrome Number](./palindrome-number.md)
 - [Maximum Subarray]
 - [Remove element](./remove-element.md)
 - [Contains Duplicate]

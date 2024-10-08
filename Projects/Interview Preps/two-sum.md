@@ -2,34 +2,22 @@
 
 **URL:** https://leetcode.com/problems/two-sum/description/
 
-```javascript
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number[]}
- */
+```python
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        numMap = {}
+        n = len(nums)
 
-/**
- [2,7,11,15]
-    0:2
-    1:7
-    2:11
-    3:15
- */     
+        # Build the hash table
+        for i in range(n):
+            numMap[nums[i]] = i
 
-var twoSum = function(nums, target) {
-    let numsMap = new Map()
-    nums.forEach((element, index) => {
-        numsMap.set(element, index)
-    })
-    
-    for (let i =0; i < nums.length -1; i++) {
-        let sub = target - nums[i]
-        if (numsMap.has(sub) && numsMap.get(sub) !== i ) {
-            return [i, numsMap.get(sub)]
-        }
-    }
+        # Find the complement
+        for i in range(n):
+            complement = target - nums[i]
+            if complement in numMap and numMap[complement] != i:
+                return [i, numMap[complement]]
 
-
+        return []  # No solution found
 };
 ```

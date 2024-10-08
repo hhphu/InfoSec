@@ -1,3 +1,4 @@
+```python
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
@@ -28,3 +29,4 @@ class Solution:
         dummyHead.next = None
 
         return result
+```

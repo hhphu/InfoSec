@@ -6,11 +6,10 @@ This contains a lists of problems that I've done to prepare for coding interview
 - Roman to Integer
 - Palindrome Number
 - Maximum Subarray
-- Remove Element
+- [Remove element](./remove-element.md)
 - Contains Duplicate
 - Add Two Numbers
 - Majority Element
 - Remove Duplicates from Sorted Array
 
-## Others
-- [Remove element](./remove-element.md)
+

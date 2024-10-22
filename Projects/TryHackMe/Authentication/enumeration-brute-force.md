@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/519400ce-0aa1-4f96-b8ca-aaa091e9aff2)# Enumeration & Brute Force
+# Enumeration & Brute Force
 
 **URL:** https://tryhackme.com/r/room/enumerationbruteforce
 

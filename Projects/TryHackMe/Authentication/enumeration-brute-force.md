@@ -1,5 +1,7 @@
 # Enumeration & Brute Force
 
+![image](https://github.com/user-attachments/assets/a9f303e9-3636-4cd1-8d78-2baf824c04e4)
+
 **URL:** https://tryhackme.com/r/room/enumerationbruteforce
 
 ## Authentication Enumeration

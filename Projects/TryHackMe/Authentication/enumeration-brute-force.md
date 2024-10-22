@@ -2,6 +2,13 @@
 
 ![image](https://github.com/user-attachments/assets/a9f303e9-3636-4cd1-8d78-2baf824c04e4)
 
+## Objectives
+By the end of this room, you will:
+- Understand the significance of enumeration and how it sets the stage for effective brute-force attacks.
+- Learn advanced enumeration methods, mainly focusing on extracting information from verbose error messages.
+- Comprehend the relationship between enumeration and brute-force attacks in compromising authentication mechanisms.
+- Gain practical experience using tools and techniques for both enumeration and brute-force attacks.
+
 **URL:** https://tryhackme.com/r/room/enumerationbruteforce
 
 ## Authentication Enumeration

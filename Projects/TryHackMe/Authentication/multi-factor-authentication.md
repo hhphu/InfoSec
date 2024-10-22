@@ -1,5 +1,7 @@
 # Multi-Factor Authentication
------
+
+![image](https://github.com/user-attachments/assets/b91c2f08-d43e-4b49-8fb0-91644c3239cc)
+
 Multi-Factor Authentication (MFA) plays an important role in modern-day applications. Instead of just relying on a password, MFA throws in extra layers of defense. Basically, MFA is a combination of different checks. It might be something you know (like a password), something you have (like your smartphone), and something you are (like a fingerprint). By using these layers, MFA makes it much tougher for threat actors to access user accounts or applications.
 
 **Objectives**

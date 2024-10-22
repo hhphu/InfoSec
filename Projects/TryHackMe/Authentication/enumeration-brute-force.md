@@ -1,4 +1,4 @@
-# Enumeration & Brute Force
+![image](https://github.com/user-attachments/assets/519400ce-0aa1-4f96-b8ca-aaa091e9aff2)# Enumeration & Brute Force
 
 **URL:** https://tryhackme.com/r/room/enumerationbruteforce
 
@@ -121,3 +121,35 @@ crunch 3 3 -t %%% -s 100 -e 200 -o otp.txt
 **- What is the flag?**
 
 `-> THM{50_pr3d1ct4BL333!!}`
+
+## Exploit Basic HTTP Authentication
+- Go to the `http://enum.thm/labs/basic_auth`
+- Attempt to login with credentials `admin:password`
+- Intercept the traffic in Burp Suite
+- In the `Authorization` field, highlight the value next to "Basic"
+  
+  ![image](https://github.com/user-attachments/assets/23d443e4-ee36-4b3e-b2bc-107d9c9a849b)
+
+- Notice that on the right side under the **Inspector** panel, the text is decoded from Base64, which results from the login credentials.
+- Send the request to Intruder to bruteforce
+- Highlight the encoded text we just inspected so it can be brute-forced
+
+![image](https://github.com/user-attachments/assets/52bf6e33-783f-4b0c-a2a9-fa9099f07d11)
+
+- In the **Payloads** tab, load the password text from `/usr/share/SecLists/Passwords/Common-Credentials/500-top-worst-passwords.txt`
+
+![image](https://github.com/user-attachments/assets/8ff67250-1626-4e4f-b5c1-a244036dee56)
+
+- Scroll down to the **Payload Processing** section, add a rule. The first rule we add is `**Add prefix**` with value `admin:`
+
+![image](https://github.com/user-attachments/assets/5f84b029-efb9-4914-998c-afb604428226)
+
+- Add the second rule to Base64 encode the whole payload. The final result of the  **Payload Process** should look like this:
+
+![image](https://github.com/user-attachments/assets/637898fc-a2d6-450d-b8e0-82a1f6de3b55)
+
+- Start the attack, and we should get a valid payload to login for `admin`. Decode it and we should get the password.
+
+**- What is the flag?**
+
+`-> THM{b4$$1C_AuTTHHH}`

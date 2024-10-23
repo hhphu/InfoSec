@@ -91,6 +91,15 @@ https://tryhackme.com/r/room/oauthvulnerabilities
 
 ## How OAuth Flow works
 
+The OAuth 2.0 flow begins when a user (Resource Owner) interacts with a client application (Client) and requests access to a specific resource. The client redirects the user to an authorization server, where the user is prompted to log in and grant access. If the user consents, the authorization server issues an authorization code, which the client can exchange for an access token. This access token allows the client to access the resource server and retrieve the requested resource on behalf of the user.
+
+The OAtuh 2.0 flow begins:
+1. A user (Resource Owner) interacts with a client application (Client), requesting access to a specific resource
+2. The Client redirects the user to authorization server
+3. The user is prompted to log in
+4. Once successfully authenticating the user, the authorization issues authorization code for the client
+5. The client use the authorization code to exchange for access token, which allow it to acess the resources servers and retrieve informaiton.
+
 
 
 

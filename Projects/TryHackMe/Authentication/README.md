@@ -9,5 +9,5 @@ This module will focus on understanding and mitigating critical vulnerabilities 
 - [Multi-Factor Authentication](./multi-factor-authentication.md)
 - [Session Management](./session-management.md)
 - [JWT Security](./jwt-security.md)
-- [OAuth Vulnerabilities](./multi-factor-authentication.md)
+- [OAuth Vulnerabilities](./oauth-vulnerabilties.md)
 - [Hammer](./hammer.md)

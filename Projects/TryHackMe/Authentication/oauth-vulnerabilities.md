@@ -100,6 +100,22 @@ The OAtuh 2.0 flow begins:
 4. Once successfully authenticating the user, the authorization issues authorization code for the client
 5. The client use the authorization code to exchange for access token, which allow it to acess the resources servers and retrieve informaiton.
 
+### Example
+In this scenario, the **`CoffeeShopApp`** is similar to the **`Gmail`** app that we usually authenticate with.
+- Users want to access the resources on Bistro app. They first need to authenticate first.
+
+  ![image](https://github.com/user-attachments/assets/287b76ca-dc4b-4ba1-a34a-9f31323a87d0)
+
+- Clicking the "Login with OAuth" button lands users onto the authorization server **`CoffeeShopApp`** to authenticate, whose URL looks like: `http://coffee.thm:8000/accounts/login/?next=/o/authorize/?client_id=zlurq9lseKqvHabNqOc2DkjChC000QJPQ0JvNoBt&response_type=code&red`
+
+  ![image](https://github.com/user-attachments/assets/b39196ed-ac2b-4fd2-8848-20e948bc2717)
+
+	- **`client_id`**: the unique identifier for the client application **`CoffeeShopApp`**
+   	- **`return_type=code`**: indicates the **`CoffeeShopApp`** is expecting the returned authorization code.
+	- **`state`**: the CSRF token for the request and the response
+   	- **`redirect_uri`**: The URL where the authorization server will send users after he grants permission. This must match one of the pre-registered redirect URIs for the client application.
+   	- **`scope`**: Specifies the level of access requested, such as viewing coffee orders.
+- 
 
 
 

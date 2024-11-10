@@ -174,4 +174,46 @@ Now with the authentication code, attackers can use it to retrieve the access to
 `-> THM{GOT_THE_TOKEN007}`
 
 
+## Exploit OAuth - CSRF in OAuth
+This vulnerability results from the `state` parameter's missing fron the URL. As stated above, the `state` parameter specifies tokens that prevent CSRF  vulnerability. However, not all OAuth URL includes the `state` parameter as it is optional.
+
+### Attacking Machine
+- From the attacking box, addd these two entries to the `/etc/hosts` file: **`mycontacts.thm`** and **`coffee.thm`**
+- Visit the URL: `http://mycontacts.thm:8080/csrf/index.php` and log in with **`attacker:attacker`**
+- Once logged in, click the **Synce Contacts** button.
+
+  ![image](https://github.com/user-attachments/assets/f7690965-fc6a-4d60-90d9-f60bc3374e9c)
+
+- Users will be navigated to **CoffeeShopApp login portal**. Inspect its URL `http://coffee.thm:8000/o/authorize/?response_type=code&client_id=kwoy5pKgHOn0bJPNYuPdUL2du8aboMX1n9h9C0PN&redirect_uri=http%3A%2F%2Fcoffee` we see the `state` parameter is misisng, ie the application is vulnerable to CSRF.
+- Log in the **`CoffeeShopApp`** with this credential: **`attacker:testla@123`** & "Authorize" once prompted. Users will be navigated to the **Sync Contacts** page where all contacts are synced from the app.
+
+![image](https://github.com/user-attachments/assets/cefef1f7-b7d4-4769-945d-593c2f1b7782)
+
+- From the provided URL, retrieve the autorization code
+  
+`http://coffee.thm:8000/o/authorize/?response_type=code&client_id=kwoy5pKgHOn0bJPNYuPdUL2du8aboMX1n9h9C0PN&redirect_uri=http://coffee.thm:8000/oauthdemo/callbackforcsrf/`
+
+![image](https://github.com/user-attachments/assets/1df25b05-6060-4ab2-be3c-a423c63cd37b)
+
+- With this code, attackers send this customized URL to victims `http://bistro.thm:8080/csrf/callbackcsrf.php?code=$CODE`
+
+### Victim Machine
+- Victims received the malicious email crafted by attackers `http://bistro.thm:8080/csrf/callbackcsrf.php?code=$CODE`
+- Even though this URL is malicious, the front end looks exactly like a regular page
+
+![image](https://github.com/user-attachments/assets/8d7b3342-692a-4309-89f9-c82043473036)
+
+- Log in using the victim's credentials: **`victim:victim`**. Once logged in, we see users are hijacked by the attackers.
+
+  ![image](https://github.com/user-attachments/assets/be3afb2e-c5f9-47a8-875a-1ac3a5513f72)
+
+**`- What is the flag value after attaching the attacker's account with the victim's account?`**
+
+`-> THM{CONTACTS_SYNCED}`
+
+**`- What parameter name does the client application include in the authorization request to avoid CSRF attacks?`**
+
+`-> state`
+
+
 

@@ -259,4 +259,7 @@ This vulnerability results from the `state` parameter's missing fron the URL. As
 
 `-> THM{TOKEN_HACKED}`
 
+## Other Vulnerabilities and Evolution of OAuth 2.1
+**- Which of the following has been omitted from OAuth 2.1?**
 
+`-> a`

@@ -122,7 +122,9 @@ In this scenario, the **`CoffeeShopApp`** is similar to the **`Gmail`** app that
 
   ![image](https://github.com/user-attachments/assets/b39196ed-ac2b-4fd2-8848-20e948bc2717)
 
-- Once users have authenticated against the **`CoffeeShopApp`**, they'll be prompted to grant permissions for the **`CoffeeShopApp`** to access resources on Bistro with the URL: `http://coffee.thm:8000/o/authorize/?client_id=zlurq9lseKqvHabNqOc2DkjChC000QJPQ0JvNoBt&response_type=code&redirect_uri=http://bistro.thm:8000/oauthdemo/callback`
+- Once users have authenticated against the **`CoffeeShopApp`**, they'll be prompted to grant permissions for the **`CoffeeShopApp`** to access resources on Bistro with the URL:
+`http://coffee.thm:8000/o/authorize/?client_id=zlurq9lseKqvHabNqOc2DkjChC000QJPQ0JvNoBt&response_type=code&
+redirect_uri=http://bistro.thm:8000/oauthdemo/callback`
 
   ![image](https://github.com/user-attachments/assets/780ce189-80c6-4722-a84b-72d2e7ef7d81)
 
@@ -155,9 +157,21 @@ Like mentioned above, these tokens are issued by the authorization server and re
 ![image](https://github.com/user-attachments/assets/54bd5cee-25a0-4861-839e-9938e8a587e8)
 
 When the victims click "Login via OAuth" button, the victims are navigate to the **`CoffeeShopApp`** to authenticate. However, if we inspect the URL, we see the `redirected_uri` is pointing to the domain that the attackers have control: `malicious_redirect.html`.
-`http://coffee.thm:8000/accounts/login/?next=/o/authorize/?client_id=zlurq9lseKqvHabNqOc2DkjChC000QJPQ0JvNoBt&response_type=code&redirect_uri=http://dev.bistro.thm:8002/malicious_redirect.html`
+`http://coffee.thm:8000/accounts/login/?next=/o/authorize/?client_id=zlurq9lseKqvHabNqOc2DkjChC000QJPQ0JvNoBt&
+response_type=code&redirect_uri=http://dev.bistro.thm:8002/malicious_redirect.html`
 
 After the victim successfully authenticate, the authorization code will be sent to the `http://dev.bistro.thm:8002/malicious_redirect.html?code=6cJDKI4CAxPqmOzscmRxZxG7jCuRcH` page instead of the regular `http://bistro.thm:8000/` page.
 
 ![image](https://github.com/user-attachments/assets/8e3cd6c5-7336-4659-8eba-0d14338396d4)
+
+Now with the authentication code, attackers can use it to retrieve the access token by making a callback function
+` http://bistro.thm:8000/oauthdemo/callbackforflag/?code=$CODE`
+
+![image](https://github.com/user-attachments/assets/ea6101f5-523f-4d4c-821d-e879a1b2b6f0)
+
+**- What is the flag value after getting the access token?**
+
+`-> THM{GOT_THE_TOKEN007}`
+
+
 

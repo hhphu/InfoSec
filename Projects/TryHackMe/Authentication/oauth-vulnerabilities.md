@@ -207,11 +207,11 @@ This vulnerability results from the `state` parameter's missing fron the URL. As
 
   ![image](https://github.com/user-attachments/assets/be3afb2e-c5f9-47a8-875a-1ac3a5513f72)
 
-**`- What is the flag value after attaching the attacker's account with the victim's account?`**
+**- What is the flag value after attaching the attacker's account with the victim's account?**
 
 `-> THM{CONTACTS_SYNCED}`
 
-**`- What parameter name does the client application include in the authorization request to avoid CSRF attacks?`**
+**- What parameter name does the client application include in the authorization request to avoid CSRF attacks?**
 
 `-> state`
 

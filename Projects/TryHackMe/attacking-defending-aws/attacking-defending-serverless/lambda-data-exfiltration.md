@@ -55,4 +55,70 @@ aws ec2 describe-vpcs
 
 `-> Mauhur's VPC - Do not Use`
 
+- In this scenario, the vitim only has some Lambda function to run. We can inpsect these functions to see what they contain.
+
+## Enumerate Lambda functions
+Run the following command to get the list of Lambda functions
+
+```bash
+aws lambda list-functions >> lambda-functions.json
+```
+
+Use the following script to enumerate the attached policies
+
+```bash
+FUNCTIONS="list-images download-images"
+
+for f in $FUNCTIONS ; do
+    ROLE=`aws lambda get-function --function-name $f --query Configuration.Role --output text | awk -F\/ '{print $NF}'`
+    echo "$f has $ROLE with these managed policies:"
+    aws iam list-attached-role-policies --role-name $ROLE
+    for p in `aws iam list-role-policies  --role-name $ROLE --query PolicyNames --output text` ; do
+        echo "$ROLE for $f has inline policy $p:"
+        aws iam get-role-policy --role-name $ROLE --policy-name $p
+    done
+done
+```
+
+As a reuslts, we see some Lambda functions handling images: One list content of the bucket and one downloads the content. 
+Amongst these two functions, only the one that downloads images has our targeted VPC configured -> Download images function will be the main target
+
+**Which Lambda function has the AWSLambda_FullAccess managed policy attached to it?**
+
+`-> list-images`
+
+**Which Lambda function has the IAM permissions to access any S3 Object in any S3 Bucket in this account?**
+
+`-> download-images`
+
+## Analyze Lambda functions
+Let's go over what we've done so far. We need to target `download-images` lambda function which is configured in a targeted VPC that has full permission over the interested S3 bucket.
+Since we have `FullLambdaAccess` permission on the 'list-images` function, we can leverage that to change the code in `donwload-images` function.
+We can analyze both functions by downloading them:
+
+```bash
+# Retrieve the Lambda function URL
+aws lambda get-function --function-name list-images --query Code.Location --output text
+
+# Download the function and save it to a zip file
+curl -s $URL -o list-images.zip
+
+# Make a new directory for the function an unzip the file
+mkdir list-images
+unzip list-images.zip -d list-images
+```
+
+We can leverage the following script to do the same thing:
+
+```bash
+FUNCTIONS="list-images download-images"
+for f in $FUNCTIONS ; do
+    URL=`aws lambda get-function --function-name $f --query Code.Location --output text`
+    curl -s $URL -o $f.zip
+    mkdir $f
+    unzip $f.zip -d $f
+done
+```
+
+
 

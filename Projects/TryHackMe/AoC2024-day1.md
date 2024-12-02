@@ -47,7 +47,7 @@ Performing some OSINT technique and Google Dorking, we can find more information
 From this, we learn that it is possible to trace back to the attacker's identity based on the scripts or the tools they use. 
 
 ## ANSWER THE QUESTION
-**- Looks like the song.mp3 file is not what we expected! Run "exiftool song.mp3" in your terminal to find out the author of the song. Who is the author? **
+**- Looks like the song.mp3 file is not what we expected! Run "exiftool song.mp3" in your terminal to find out the author of the song. Who is the author?**
 
 `-> Tyler Ramsbey`
 

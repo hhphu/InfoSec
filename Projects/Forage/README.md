@@ -4,7 +4,6 @@
 Forage cybersecurity job simulations offer a hands-on, immersive experience that replicates real-world cybersecurity tasks at leading companies. In 5-6 hours, participants use industry-standard tools and techniques to address security challenges, gaining practical insights into threat assessment, risk management, and vulnerability analysis, while connecting with top employers in the field.
 
 ## Programs
-### [AIG](AIG)
 ### [Datacom](Datacom)
 - Leveraged OSINT technique to investigate APT34 and conducted a comprehensive risk assessment report and recommendations to enhance a client's cybersecurity posture.
 ### [GoldmanSachs](GoldmanSachs)

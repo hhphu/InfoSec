@@ -71,7 +71,7 @@ addresses for EC2 instances within VPC
 - NAT Gateway: allow resources to communicate with other services outside the VPC.
 
 -----
-# Anser the questions
+# Answer the questions
 - How many digits are in an AWS Account ID?
 
 `-> 12`

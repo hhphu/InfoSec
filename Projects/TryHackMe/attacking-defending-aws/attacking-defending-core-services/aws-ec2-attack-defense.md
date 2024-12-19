@@ -179,6 +179,19 @@ cat /snapshot-recovery/flag.txt
 
 ![image](https://github.com/user-attachments/assets/49e0eda7-65ff-4c5d-9657-e6aebd2b3ed3)
 
+### ANSWER THE QUESTIONS
+**- What is the value of the PrivateIpAddresses.Association.IpOwnerId of the ENI you discovered?**
+
+Run the command `aws ec2 describe-network-interfaces | jq '.NetworkInterfaces[0]'` to retrieve the answer.
+
+-> amazon
+
+**- What CTO is quoted in the flag you found on the volume?**
+
+![image](https://github.com/user-attachments/assets/ef790ab7-578b-4f3f-8c94-f2e0a56c60fa)
+
+-> Werner Vogels
+
 ## EC2 Configuration
 - Retrieve AMI information
 

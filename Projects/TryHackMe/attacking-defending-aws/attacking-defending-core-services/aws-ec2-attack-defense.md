@@ -10,11 +10,46 @@
 
 ![9823afab2ed71b05b9b75c241c01f215](https://github.com/user-attachments/assets/f051ae45-983b-49f7-ac02-c04ce75c4663)
 
+General URL for Instance Connect **`https://console.aws.amazon.com/ec2/v2/connect/$USERNAME/$INSTANCE_ID`**
+
 ### AWS SSM
 - SSN stands for Simple Systems Manager: allow users to install a package or run a command on Linux/Windows server.
 - AWS Systems Manager Session Manager is another capability that allows users to connect to EC2 instance.
 
 ![cd3359835859b8e9ba3f758b5634bfdd](https://github.com/user-attachments/assets/e2ef7a42-84a5-4fcf-b8c6-c10d17920739)
+
+### Serial Console
+- A new feature of AWS to connect to EC2 intances
+- Must be enabled by administrators and the user within the EC2 instance must have passowrd configured in `/etc/passwd`.
+
+
+### ANSWER THE QUESTIONS
+**- Connect to your EC2 Instance via Instance Connect. Run the id command, and answer what user you're logged in as:**
+
+1. In the EC2 dashboad, selet the instance and click **Connect** button.
+
+![image](https://github.com/user-attachments/assets/2ccac66c-4b10-45f2-867e-0eadc90ee650)
+
+2. On the next page, click **Connect** button.
+
+![image](https://github.com/user-attachments/assets/5e79053e-797e-4529-a92a-369b48a9c173)
+
+Run the command `whoami` and we get the id.
+
+-> `ec2-user`
+
+**- Now connect via SSM Session Manager. Run the id command. What user are you connected as?**
+
+Similar to the above steps, however, in step 2, select **Session Manageer** tab and click **Connect** button.
+
+Run the command `whoami` and we get the id.
+
+-> `ssm-user`
+
+**- Using either the Instance Connect or SSM Session Manager session, run "sudo passwd root" and set a password for the root user. Can you now log in with the EC2 Serial Console? (Yea or Nay)**
+
+-> `yea`
+
 
 ## Instance Permissions
 ### Instance Metadata Service (IMDS)

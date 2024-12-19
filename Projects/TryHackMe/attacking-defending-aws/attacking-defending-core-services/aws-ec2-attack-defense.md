@@ -184,13 +184,13 @@ cat /snapshot-recovery/flag.txt
 
 Run the command `aws ec2 describe-network-interfaces | jq '.NetworkInterfaces[0]'` to retrieve the answer.
 
--> amazon
+-> `amazon`
 
 **- What CTO is quoted in the flag you found on the volume?**
 
 ![image](https://github.com/user-attachments/assets/ef790ab7-578b-4f3f-8c94-f2e0a56c60fa)
 
--> Werner Vogels
+-> `Werner Vogels`
 
 ## EC2 Configuration
 - Retrieve AMI information
@@ -226,8 +226,27 @@ aws ec2 describe-instance-attribute --attribute userData --instance-id $instance
 
 ![image](https://github.com/user-attachments/assets/8b3d23e1-da72-499a-ac30-96d5ce242030)
 
+### ANSWER THE QUESTIONS
+**- What is the AMI ID of the AMI named "EC2RoomCapstone-SecretDataInstance-2022-Mar-25.0"?**
+
+Runt the following command to look for the AMI instance whose name is "EC2RoomCapstone-SecretDataInstance-2022-Mar-25.0"
+
+```bash
+aws ec2 describe-images --owners 019181489476 --query 'Images[?Name==`EC2RoomCapstone-SecretDataInstance-2022-Mar-25.0`]'
+```
+
+-> `ami-07d271a5875d66846`
+
+![image](https://github.com/user-attachments/assets/70f08068-b466-4e72-8fbe-2cbeb2867c19)
 
 
+**- What is the password that is written to the file in /etc?**
+
+In the EC2 instance, run `curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/user-data`
+
+![image](https://github.com/user-attachments/assets/cab1a995-e6c1-4545-9e6f-6f97ce550f2c)
+
+-> `Winter2022!`
 
 
 

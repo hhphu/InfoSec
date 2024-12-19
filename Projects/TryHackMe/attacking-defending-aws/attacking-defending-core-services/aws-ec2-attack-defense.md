@@ -62,11 +62,21 @@ Run the command `whoami` and we get the id.
   ```bash
   role_name=$( curl -s http://169.254.169.254/latest/meta-data/iam/security-credentials)
   ```
+
+  ![image](https://github.com/user-attachments/assets/f5f4829d-e503-4aa0-95eb-79bc83450cac)
+
 - Now we can retrieve the session credentials for the role:
 
 ```bash
 curl -s http://169.254.169.254/latest/meta-data/iam/security-credentials/${role_name}
 ```
+
+![image](https://github.com/user-attachments/assets/230569db-cb69-4949-99f6-cd60beb2e27b)
+
+
+## Mitigation
+
+In the past, attackers leveraged IMDS to enumerate credentials and leverage for further attacks. To mitigate this, we should update the IMDS to version 2 and requires authentication token every time we make API calls to IMDSv2 service
 
 - To enable IMDSv2, we do run the following commands:
 
@@ -92,6 +102,24 @@ echo $TOKEN
 role_name = $( curl -s -H "X-aws-ec2-metadata-token:$TOKEN" http://169.254.169.254/latest/meta0data/iam/security-credentials/ )
 curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/iam/security-credentials/${role_name}
 ```
+
+## ANSWER THE QUESTIONS
+**- What is the role_name attached to your Instance?**
+
+-> `Ec2RoomInstanceProfile`
+
+**- What was the "Type" of the Credentials returned?**
+
+-> `AWS-HMAC`
+
+**- What are the first four characters of the IMDSv2 token returned?**
+
+-> `AQAE`
+
+**- What HTTP Error Code do you get if you attempt to use the metadata service without the token?**
+
+-> `401`
+
 
 ## EC2 Networking & Storage
 - EC2 Networking revolves around **Elastic Network Interface (ENI)**. Each EC2 instance has at least 1 ENI, which has at least 1 Security Group attached to it. We can try the following command

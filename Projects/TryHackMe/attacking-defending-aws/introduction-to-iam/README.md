@@ -1,6 +1,6 @@
 # Introduction to IAM
 
-![image](https://github.com/user-attachments/assets/92068cf3-03a5-4540-8937-435ba9f2aad6)
+![image](https://github.com/user-attachments/assets/90993d96-8150-4994-984b-098be5c346d8)
 
 
 - **[Introduction to AWS IAM](introduction-to-aws-iam.md)**

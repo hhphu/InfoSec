@@ -42,3 +42,15 @@ arn:aws:iam::123456789012:role/admin-role
 
 ### Conclusion
 - AWS IAM is more than just a security feature—it's the very framework that controls access to your cloud environment. Whether you're a defender or an attacker, understanding IAM is crucial. By mastering IAM, you can ensure that your AWS resources are secure and that you’re prepared to defend your cloud environment against increasingly sophisticated threats. Remember, in the cloud, you’re not just defending a network—you’re defending the very controls that manage that network.
+
+
+Understand the parts of the identity and access management service to set a good foundation for attacking and defending this service.
+
+- **[Introduction to AWS IAM](introduction-to-aws-iam.md)**
+- **[IAM Principals](iam-principals.md)**
+- **[IAM Permissions](iam-permissions.md)**
+- **[IAM Credentials](iam-credentials.md)**
+- **[Resource Policies & SCPs](resource-policy-scps.md)**
+- **[The Quest for Least Privilege](the-quest-for-least-privilege.md)**
+- **[STS Credentials Lab](sts-credentials-lab.md)**
+- 

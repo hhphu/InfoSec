@@ -2,6 +2,7 @@
 
 ![image](https://github.com/user-attachments/assets/90993d96-8150-4994-984b-098be5c346d8)
 
+Understand the parts of the identity and access management service to set a good foundation for attacking and defending this service.
 
 - **[Introduction to AWS IAM](introduction-to-aws-iam.md)**
 - **[IAM Principals](iam-principals.md)**

@@ -14,5 +14,5 @@ This pathway provides hands on access with common misconfigurations across AWS e
 - **[Introduction to AWS](introduction-to-aws)**
 - **[Introduction to IAM](introduction-to-iam)**
 - **[Attacking & Defending core services](attacking-defending-core-services)**
-- **[Attaciking & Defending serverless](attacking-defending-serverless)**
+- **[Attacking & Defending serverless](attacking-defending-serverless)**
 - **[IAM Privilege Escalation](iam-privilege-escalation)**

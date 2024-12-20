@@ -1,18 +1,18 @@
 
 
-![image](https://blog.tryhackme.com/content/images/2023/04/Attacking-and-Defending-AWS-Environments--launch---4-.png)
+![image](https://github.com/user-attachments/assets/002256ee-a9b1-4436-aa35-602756eb786d)
 
-# Introduction
-Amazon Web Services is the most popular cloud service provider in the world offering hundreds of services. With a large number of businesses adopting cloud technologies like AWS, cyber practitioners must understand the security implications of moving to the cloud.
 
-This pathway provides hands on access with common misconfigurations across AWS environments and understand defensive mitigations to prevent these attacks including:
-- identifying, enumerating and exploiting overly permissive IAM users, roles and policies
-- exploring serverless infrastructure and common attack vectors present within these services
-- exploiting weaknesses in the most common AWS services including S3, EC2, VPC and mo
+
 
 # Table of Contents
-- **[Introduction to AWS](introduction-to-aws)**
-- **[Introduction to IAM](introduction-to-iam)**
-- **[Attacking & Defending core services](attacking-defending-core-services)**
-- **[Attacking & Defending serverless](attacking-defending-serverless)**
-- **[IAM Privilege Escalation](iam-privilege-escalation)**
+**[![image](https://github.com/user-attachments/assets/a17a5d2f-3d2f-44a6-8b56-e63b4c452355)
+](introduction-to-aws)**
+**[![image](https://github.com/user-attachments/assets/cffd5712-9d56-4758-a72e-bd477e42e187)
+](introduction-to-iam)**
+**[![image](https://github.com/user-attachments/assets/a3f5872b-4e37-46e3-a76e-5a18ef2190da)
+](attacking-defending-core-services)**
+**[![image](https://github.com/user-attachments/assets/51c7269c-cb60-44b6-93a0-159e2d216b5b)
+](attacking-defending-serverless)**
+**[![image](https://github.com/user-attachments/assets/a8eaf5f0-83cf-4bf9-a594-861381d58394)
+](iam-privilege-escalation)**

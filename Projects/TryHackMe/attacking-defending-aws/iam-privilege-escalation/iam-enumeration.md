@@ -8,12 +8,12 @@
 ## AWS IAM Enumveration Mechanics
 ### Scavening for credentials
 AWS Boto3 is popular libraries used to work wiht AWS. A few places to look for:
-- Environment Variables: users can set credentials using `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` as environment variables.
-- Shared credentials File (~/.aws/credentials): The most common place when storeing IAM user access keys or SSO configurations for assuming role.
-- AWS Config file (`/.aws/config): Credential sources that referenc helper scripts and other external credentials providers are commonly referenced here.
-- Assume Role Provider: when sombody uses AWS SSO/other mechanism to assume a role, it is cached at `~/.aws/cli/cache/$ROLE_SESSION_ID`
-- Boto2 config file: predecessor version to Boto3 and may be used in legacy clients
-- Instance Metadata Service: EC2 instances that have IAM roles configured.
+- **Environment Variables:** users can set credentials using `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` as environment variables.
+- **Shared credentials File (~/.aws/credentials):** The most common place when storeing IAM user access keys or SSO configurations for assuming role.
+- **AWS Config file (`/.aws/config):** Credential sources that referenc helper scripts and other external credentials providers are commonly referenced here.
+- **Assume Role Provider:** when sombody uses AWS SSO/other mechanism to assume a role, it is cached at `~/.aws/cli/cache/$ROLE_SESSION_ID`
+- **Boto2 config file:** predecessor version to Boto3 and may be used in legacy clients
+- **Instance Metadata Service:** EC2 instances that have IAM roles configured.
 
 ### Get-Access-Key-Info
 - When found an access key, we can use aws cli to extract information

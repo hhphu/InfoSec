@@ -73,10 +73,32 @@ with open('test.txt', 'w') as f:
             f.write(f"{first}{j[0].lower()}\n")
 ```
 
+- A pre-generated wordlist can be downloaded here
+
+```bash
+curl https://gist.githubusercontent.com/righteousgambit/72220f9b7296f83133240d06d9653c0a/raw/eea20d3390e01e5570018b222633336c6c13d3fd/Common%2520Adam%2520and%2520John%2520Usernames -o pregenerated-usernames.txt
+```
+
 - Set up Quiet Riot to perform enumeration
 ```bash
 quiet_riot --scan 5
 ```
+
+- To enumertate IAM role, we select option 1. For IAM user, we select option 2.
+- Then we provide the AWS Account ID we find when running `aws sts get-caller-identity`
+- Specify the pre-generated-usernames.txt file
+
+![image](https://github.com/user-attachments/assets/843830b8-9ed1-4e05-9ded-6089c7b45742)
+
+  
+## ANSWER THE QUESTIONS
+- **What is John's username? **
+
+-> `john.cervantes` 
+
+- **What is Adam's last name?**
+
+-> `foreman`
 
 ## Enumerat Root User Email Adadress
 - AWS S3 ACLs policy can be used to place email addresses that correspond to potential root user email addresses.

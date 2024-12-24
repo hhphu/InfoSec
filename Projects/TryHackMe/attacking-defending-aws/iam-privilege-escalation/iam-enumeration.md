@@ -105,5 +105,33 @@ quiet_riot --scan 5
 ```bash
 quiet_riot --s 4
 ```
-- For this option, we need a rootuser.txt to enumerate. This process may take a while. Hence, it's best to perform it once we found a list of usernames.
+- For this option, we need a `rootuser.txt` to enumerate. This process may take a while. Hence, it's best to perform it once we found a list of usernames.
+- Becasue of sensitivity, this is just a theory that no activity is availalble for this action.
 
+## Footprinting services
+- We can enumerate services to see which one is running using quiet-riot.
+
+```bash
+quiet_riot --s 3
+```
+
+- We see that there are 6 principals found.
+
+  ![image](https://github.com/user-attachments/assets/653e48ff-5079-4ba2-9dab-dd6e0a7d4855)
+
+- Amongst them, there are only 5 assumed roles, i.e every principal but this one
+
+```bash
+arn:aws:iam::637423357278:role/OrganizationAccountAccessRole
+```
+
+## ANSWER THE QUESTIONS
+- **How many roles does Quiet Riot identify in your account when you run the Service Footprinting option?**
+
+-> `5`
+
+- **What services appear enabled based on the results?**
+
+  Go to the AWS Console and inspect each of the service, we see that Rout53resolver service has not been configured, meaning that it is not enabled.
+
+->  `guardduty, organizations, support, trustedadvisor`

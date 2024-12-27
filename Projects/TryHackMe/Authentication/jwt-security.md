@@ -38,7 +38,7 @@
 - https://jwt.io/ - This helps us quickyly decode the JWT and see their values
 - Python's pyjwt - A Python module that is used to create JWT. We will be looking at some vulnerable codes as well as how to fix them
 
-## JWT Vulnerabilities
+# JWT Vulnerabilities
 ## Sensitive Information Disclosure
 - IN cookied-based sessions, server store the values of the tokens. Hence, these information are not publicly exposed on the client-side.
 - JWT, since processed on the client-side, if not carefully implemented, may expose sensitive information like users' credentials, privileges, network configurations,etc.
@@ -264,4 +264,27 @@ curl -H 'Content-Type: application/json' -X POST -d '{ "username" : "user", "pas
 
 -> `THM{f592dfe2-ec65-4514-a135-70ba358f22c4}`
 
-   
+## JWT Lifetimes
+AS we may have seen throught the above example, there is no information from the JWT that specifies the experiation of the JWT. Usually, when it's not mentioned, the JWT does not expire, meaning we can use as long as we want.
+We need to set expiration for the JWT, like how the cookie-based sessions have expiration time.
+
+**The Fix**
+```python
+lifetime = datetime.datetime.now() + datetime.timedelta(minutes=5)
+
+payload = {
+    'username' : username,
+    'admin' : 0,
+    'exp' : lifetime
+}
+```
+
+### ANSWER THE QUESTIONS
+- **What is the flag for example 6?**
+Use the proivided token to retrieve the flag.
+
+![image](https://github.com/user-attachments/assets/03e09b10-6708-4bd6-9250-e7be68b56343)
+
+-> `THM{a450ae48-7226-4633-a63d-38a625368669}`
+
+## Cross-Server Relay Attacks

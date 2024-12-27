@@ -127,4 +127,29 @@ Since the JWT does not validate signature, we can just change the claim to **`{ 
 
 -> `THM{6e32dca9-0d10-4156-a2d9-5e5c7000648a}`
 
+### Downgrade to None
+- In server-to-server communications, since JWT is verified in the front-end, the second server woudl not need to verify the signature. If the developers do not lock in the signature algorithm used (or deny the **None** algorithm), attackers can change the algorithm to **None** by modifying the JWT
 
+**Demonstration**
+- Retreive the user's token
+```bash
+curl -H 'Content-Type: application/json' -X POST -d '{ "username" : "user", "password" : "password3" }' http://10.10.53.116/api/v1.0/example3
+```
+ 
+**Vulnerable Code**
+In this case, the developers want to include several algorithms for the signature. They implement the code to read the header of the JWT and parse found `alg` into the signature verification, without denying the **None** algorithm
+
+```bash
+header = jwt.get_unverified_header(token)
+signature_algorithm = header['alg']
+payload = jwt.decode(token, self.secret, algorithms=signature_algorithm)
+```
+
+**The Fix**
+- When multiple algorithms are supported, they should be included in an array in the decode function.
+```bash
+payload = jwt.decode(token, self.secret, algorithms=["HS256", "HS384", "HS512"])
+
+username = payload['username']
+flag = self.db_lookup(username, "flag")
+```

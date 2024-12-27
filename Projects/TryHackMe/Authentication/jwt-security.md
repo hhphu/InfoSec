@@ -217,3 +217,51 @@ curl -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFt
 ![image](https://github.com/user-attachments/assets/aace4308-2f39-40b7-b469-509819a5d135)
 
 -> `THM{e1679fef-df56-41cc-85e9-af1e0e12981b}`
+
+## Signature Algorithm Confusion
+Sometimes, the public key is included in the JWT. Though it is normal to see the public key, we can actually leverage this piece of information to exploit the JWT. Specifically in this case, we can downgrade the algorithm from `RS256` to `HS256`, using the public key as the symmetric key for `HS256`
+
+**Steps to exploit**
+- Retrieve a user's JWT. We will get the public key
+- Create a new JWT using this public key. Make sure to set **`algorithm='HS256'`**
+- **IMPORTANT**: the latest version of the `jwt` module has fixed this vulnerability. If we want to perform this exploit we must go into **`/usr/lib/python3/dist-packages/jwt/algorithms.py`** to comment out lines 143-146.
+
+**Vulnerable code**
+In this piece of code, both symmetric and assymmetric algorithms are allowed, which causes the confusion
+```python
+payload = jwt.decode(token, self.secret, algorithms=["HS256", "HS384", "HS512", "RS256", "RS384", "RS512"])
+```
+
+**The Fix**
+We can implement some logic to make sure there is no confusion
+
+```python
+if "RS" in algorithm:
+    payload = jwt.decode(token, self.public_key, algorithms=["RS256", "RS384", "RS512"])
+elif "HS" in algorithm:
+    payload = jwt.decode(token, self.secret, algorithms=["HS256", "HS384", "HS512"])
+```
+
+### ANSWER THE QUESTIONS
+- **What is the flag for example 5?**
+
+Follow the **Steps to exploit** above:
+1. Retrieve the token and the public key
+```bash
+curl -H 'Content-Type: application/json' -X POST -d '{ "username" : "user", "password" : "password5" }' http://10.10.169.12/api/v1.0/example5
+```
+
+![image](https://github.com/user-attachments/assets/ce72bc26-7385-4a78-9b72-0f1aa07fc208)
+
+2. Modify the `algorithm.py` file
+   
+   ![image](https://github.com/user-attachments/assets/eac38c3f-b25a-4f21-8abd-ee8e2a43bd95)
+
+3. Generate a new JWT
+4. Use the newly generated JWT to verify the `admin` user
+
+   ![image](https://github.com/user-attachments/assets/aae9f0c5-3e0e-4214-adb1-70137b05a280)
+
+-> `THM{f592dfe2-ec65-4514-a135-70ba358f22c4}`
+
+   

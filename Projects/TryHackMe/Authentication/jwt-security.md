@@ -128,14 +128,28 @@ Since the JWT does not validate signature, we can just change the claim to **`{ 
 -> `THM{6e32dca9-0d10-4156-a2d9-5e5c7000648a}`
 
 ### Downgrade to None
-- In server-to-server communications, since JWT is verified in the front-end, the second server woudl not need to verify the signature. If the developers do not lock in the signature algorithm used (or deny the **None** algorithm), attackers can change the algorithm to **None** by modifying the JWT
+In server-to-server communications, since JWT is verified in the front-end, the second server woudl not need to verify the signature. If the developers do not lock in the signature algorithm used (or deny the **None** algorithm), attackers can change the algorithm to **None** by modifying the JWT
 
 **Demonstration**
-- Retreive the user's token
-```bash
-curl -H 'Content-Type: application/json' -X POST -d '{ "username" : "user", "password" : "password3" }' http://10.10.53.116/api/v1.0/example3
+- Retreive the user's token and verify the user
+  
+![image](https://github.com/user-attachments/assets/c18da188-27e3-43b7-b191-ce53732190fe)
+
+- At this point, we know the first part of the JWT, when decoded will look like this.
+```json
+{
+  "typ": "JWT",
+  "alg": "HS256"
+}
 ```
- 
+- Change the `alg` value to `None` and use [CyberChef](https://gchq.github.io/CyberChef/) to encode the whole thing again. We will get a new encoded header.
+
+![image](https://github.com/user-attachments/assets/6f26d1a6-a252-4474-8e28-a0bc210689c2)
+
+Replace the old header with this new one (omit the `=` sign). Try to verify the user again using this modified JWT. we should get the same result
+
+![image](https://github.com/user-attachments/assets/c99df705-0df8-4782-b842-56b64163c268)
+
 **Vulnerable Code**
 In this case, the developers want to include several algorithms for the signature. They implement the code to read the header of the JWT and parse found `alg` into the signature verification, without denying the **None** algorithm
 
@@ -153,3 +167,17 @@ payload = jwt.decode(token, self.secret, algorithms=["HS256", "HS384", "HS512"])
 username = payload['username']
 flag = self.db_lookup(username, "flag")
 ```
+### ANSWER THE QUESTIONS
+- **What is the flag for example 3?**
+  Now that we have modifed the header of the JWT, we can continue to modify the claim of the JWT, chaning it to the admin's values and verify the admin user
+  
+  ![image](https://github.com/user-attachments/assets/f81d14f2-7054-4dda-bd5f-08be40e4d33d)
+
+- Use the modified JWT to retreieve the values of admin user
+```bash
+curl -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJOb25lIn0.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOjF9._yybkWiZVAe1djUIE9CRa0wQslkRmLODBPNsjsY8FO8' http://10.10.169.12/api/v1.0/example3?username=admin
+```
+![image](https://github.com/user-attachments/assets/fa017e85-8d31-44ed-b47d-2b6ec402f47a)
+ 
+-> `THM{6e32dca9-0d10-4156-a2d9-5e5c7000648a}`
+

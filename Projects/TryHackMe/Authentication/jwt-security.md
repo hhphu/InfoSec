@@ -341,7 +341,7 @@ As expected, we get the admin privilege on appA, which is not supposed to be.
 ### ANSWER THE QUESTIONS
 - **What is the flag for example 7?**
 
--> THM{f0d34fe1-2ba1-44d4-bae7-99bd555a4128}
+-> `THM{f0d34fe1-2ba1-44d4-bae7-99bd555a4128}`
 
 # Conclusion
 In this room, several common misconfigurations and vulnerabilities with JWT implementations were showcased. As a summary, take note of the following:

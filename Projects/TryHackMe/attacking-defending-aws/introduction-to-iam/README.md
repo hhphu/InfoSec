@@ -1,6 +1,7 @@
 # Introduction to IAM
 
-![image](https://github.com/user-attachments/assets/90993d96-8150-4994-984b-098be5c346d8)
+![image](https://github.com/user-attachments/assets/7be9c198-1e45-4556-9a90-ff486479f61a)
+
 
 Understand the parts of the identity and access management service to set a good foundation for attacking and defending this service.
 

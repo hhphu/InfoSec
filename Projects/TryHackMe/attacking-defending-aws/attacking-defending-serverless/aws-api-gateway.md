@@ -76,6 +76,57 @@ python fire.py --command list
 ### ANSWER THE QUESTIONS
 - **What is the serverless capability that AWS API Gateway represents?**
 -> `reverse proxy`
-- **What default function does Lambda perform for API Gateway endpoints?**
--> `aws service proxy`
+- **What does rotating IP addresses allow you to bypass?**
+-> `IP-based restrictions`
 
+## Attacking Lambda Authorizers on API Gateway
+- Lambda Authorizers provides authorization for API request. Lambda authorizers function is executed before and API request is processed, and it returns a policy document that specifies whether the request is authorized or not.
+
+### Greedy Expansion
+- For convenience, Lambda Authorizer often uses `*``, which is known as greedy operator that matches zero or more characters in a string. When used in matching URL paths, this can lead to unexpected matches if not used carefully. As a result, attackers can get access to resources from certain API endpoints when they're not supposed to.
+
+### Exploiting bestcloudcompany.org API endpoints
+- Navigate to https://api.bestcloudcompany.org to read the company's API documentation.
+
+![image](https://github.com/user-attachments/assets/e08e3e9b-460f-4545-b44f-e0fbf3630b74)
+
+- From the document, we see that there are several endpoints to be tested: **`/test/test/`**, **`/test/admin`** (user **`test`** and **`admin`** on **test stage**) & **`/prod/test`**, **`/prod/admin`** ((user **`test`** and **`admin`** on **production stage**).
+- On top of that, we need a header to make API call: **`authorizationToken:testing123`**
+
+```bash
+curl -H "authorizationToken:testing123" https://api.bestcloudcompany.org/test/test
+```
+
+![image](https://github.com/user-attachments/assets/8c878753-f70c-4ab5-8491-e5d32ecdad0b)
+
+- It looks like the value of **`api_key`** is being used as the **authorizationToken header**.
+- Let's try to retrieve the admin's **`api_key`** on the **test stage**
+
+```bash
+curl -H "authorizationToken:testing123" https://api.bestcloudcompany.org/test/admin
+```
+
+![image](https://github.com/user-attachments/assets/e2f8a685-1ff4-468e-bc98-f9b405ae0be2)
+
+- Trying these **api_key's** values as **authorizationToken header**'s values to access **`test`** and **`admin`** user on **prod stage**. As expected, we are not authorized to view such resources.
+
+![image](https://github.com/user-attachments/assets/7f0b621a-28a9-499a-8b11-a6475f0a8bc3)
+
+- Assume we can view the Lambda authorizer policy, we can actually spot the vulnerability
+
+```bash
+if event['authorizationToken'] == 'testing123':
+        auth = 'Allow'
+        authResponse = {"principalId": "testing123", "policyDocument": {"Version": "2012-10-17", "Statement": [
+            {"Action": "execute-api:Invoke",
+             "Resource": "arn:aws:execute-api:us-east-1:{ACCOUNT_ID}:*/*/test/*",
+             "Effect": auth}]}}
+        return authResponse
+    elif event['authorizationToken'] == ‘{PROD_AUTH_TOKEN}’:
+        auth = 'Allow'
+        authResponse = {"principalId": "testing123", "policyDocument": {"Version": "2012-10-17", "Statement": [
+            {"Action": "execute-api:Invoke",
+             "Resource": "arn:aws:execute-api:us-east-1:{ACCOUNT_ID}:*/*/prod/*",
+             "Effect": auth}]}}
+        return authResponse
+```

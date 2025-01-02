@@ -130,3 +130,28 @@ if event['authorizationToken'] == 'testing123':
              "Effect": auth}]}}
         return authResponse
 ```
+
+- Look at the policy for `authorizationToken:testing123`, we see that users can access all resources as specified **`arn:aws:execute-api:us-east-1:{ACCOUNT_ID}:*/*/test/*`**
+
+- The URL **https://api.bestcloudcompany.org/test/test** satisfies the **`*/*/test/*`** regex. The interesting thing is, this URL **https://api.bestcloudcompany.org/prod/test/** also satisfies the regex pattern. This means we can get the **`test`** user's api on **prod stage**. We can actually confirm this:
+
+![image](https://github.com/user-attachments/assets/02b54f82-28e2-4aee-b2c7-e7203c88c6cd)
+
+- We found **`test's api_key`** on **prod stage**: `16c7d47c2d1248dc8504219441e3d23f`
+- We can now use this newly acquired api_key to check for the **`admin`** on **prod stage**
+
+```bash
+curl -H "authorizationToken:16c7d47c2d1248dc8504219441e3d23f" https://api.bestcloudcompany.org/prod/admin
+```
+
+![image](https://github.com/user-attachments/assets/5b83c10f-2d73-4355-a5dd-e67cbd5cd4c0)
+
+- And we get it, without having John provide us the password. In this case, the greedy operator are used in an unexpected way to exploit the API endpoint, hence gaining access to unauthorized resource.
+
+### ANSWER THE QUESTIONS
+- **What is the api_key for the /test/test user?**
+-> `testing123`
+- **What is the api_key value for the /test/admin user?**
+-> `2008951f220d4c8d9877bb979d560342`
+  - **What is the api_key value for the /prod/admin user?**
+-> `af84b63da20b4d04a62aca8abdfc3813`

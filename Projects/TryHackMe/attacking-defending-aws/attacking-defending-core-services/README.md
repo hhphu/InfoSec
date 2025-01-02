@@ -1,6 +1,6 @@
 # Attacking and Defending Core Services
 
-![image](https://github.com/user-attachments/assets/9e838c70-6f01-44d5-9fc2-c72987a8f831)
+![image](https://github.com/user-attachments/assets/10ba635f-7f07-43d4-9855-29ffd7e6612c)
 
 Explore security misconfiguration on commonly used AWS services, including EC2, S3, VPC and more
 

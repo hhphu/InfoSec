@@ -1,30 +1,3 @@
-
-
-**[Bug Type] Title:**
-
-**Description:**
-
-**Severity:**
-
-**Plaform:** 
-
-**Environment:** 
-
-**URL**: 
-
-**Reproducibility:** 
-
-**Step to reproduce:**
-
-**Expected Result:** 
-
-**Actual Result:** 
-
-**Screenshot:** 
-
-**Miscellaneous:** 
-
-
 # Test Plan Development
 
 ## Points of Contacts

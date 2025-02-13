@@ -12,6 +12,8 @@
 
 **4. [Types of CSRF attacks](#types-of-csrf-attacks)**
 
+**5. [Basic CSRF Exploitation](#basic-csrf-exploitation)**
+
 **[Answer the questions](#answer-the-questions)**
 
 
@@ -88,6 +90,8 @@ fetch("https://mailbox.thm/api/updateEmail", {
 3. Since the web malcious web page is open in the same browser that stores the user's authenticated session cookie for `mailbox.thm`, the request is processed as if it's coming from a legitimate user.
 4. The attacker now has access to the victim's emails.
 
+## Basic CSRF Exploitation
+
 
 ## ANSWER THE QUESTIONS
 
@@ -99,5 +103,11 @@ fetch("https://mailbox.thm/api/updateEmail", {
 
 -> `yea`
 
+**What is usually the extension of a malicious flash file used during a CSRF attack?**
 
+-> `.swf`
+
+**Which type of CSRF exploitation is carried out when operations are initiated without a complete page request-response cycle?**
+
+-> `asynchronous`
 

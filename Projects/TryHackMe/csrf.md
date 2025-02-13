@@ -4,9 +4,9 @@
 
 # TABLE OF INDEX
 
-**1. [Learning Objectives](#learning-objectives)
-2. [Setup](#setup)
-3. CSRF Overview**
+**1. [Learning Objectives](#learning-objectives)**
+**2. [Setup](#setup)**
+**3. [CSRF Overview](#csrf-overview)**
 
 
 ## Learning Objectives

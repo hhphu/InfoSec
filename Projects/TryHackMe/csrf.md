@@ -2,6 +2,14 @@
 
 **URL:** https://tryhackme.com/room/csrfV2
 
+# TABLE OF INDEX
+
+1. [Learning Objecgives](##LearningObjectives)
+2. Setup
+3. CSRF Overview
+4. 
+
+
 ## Learning Objectives
 - Understand the working of CSRF
 - Type of CSRF attacks
@@ -22,9 +30,20 @@ There are three phases of a CSRF attack:
 - The victims' identities are confirmed on the websites, usually through the cookies transmitted throughout multiple domains.
 - The lack of security implementations on the websites that prevent attackers making unauthorized requests on behalf of the victims.
 
-## CSRF Effect
+### CSRF Effect
 
 - A successful CSRF can result in unauthorized access to users' data, leading to information disclosure. Attackers can also manipulate users' information for specific purposes.
 - Stealthy exploitation: Attackers can leverage CSRF and use it as a stepping stone for other attacks to further exploit the applications.
 
--  
+## ANSWER THE QUESTIONS
+
+![image](https://github.com/user-attachments/assets/721f4b3e-a8b4-4b84-a551-326abceba9b8)
+
+-> `d`
+
+**Does the attacker usually know the web application requests and response format while launching a CSRF attack (yea/nay)?**
+
+-> `yea`
+
+
+

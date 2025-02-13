@@ -5,8 +5,14 @@
 # TABLE OF INDEX
 
 **1. [Learning Objectives](#learning-objectives)**
+
 **2. [Setup](#setup)**
+
 **3. [CSRF Overview](#csrf-overview)**
+
+**4. [Types of CSRF attacks](#types-of-csrf-attacks)**
+
+**[Answer the questions](#answer-the-questions)**
 
 
 ## Learning Objectives
@@ -33,6 +39,17 @@ There are three phases of a CSRF attack:
 
 - A successful CSRF can result in unauthorized access to users' data, leading to information disclosure. Attackers can also manipulate users' information for specific purposes.
 - Stealthy exploitation: Attackers can leverage CSRF and use it as a stepping stone for other attacks to further exploit the applications.
+
+## Types of CSRF attacks
+
+- Traditional CSRF focuses on the state-changing of the application by submiting forms.
+  
+![image](https://github.com/user-attachments/assets/30bd5ff1-fed3-4244-a306-34d2bb04b5aa)
+
+1. A user authenticates to the banking application
+2. The attacker crafts a malicious link and send it to the user. This malicious link contains the actions the attacker wants to perform on the application under the user's identity.
+3. The user open the email on the same browser and clicks the link.
+4. The unauthorized action is performeed (transfering money to the attacker's account) using the victim's cookies.
 
 ## ANSWER THE QUESTIONS
 

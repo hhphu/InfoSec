@@ -4,7 +4,7 @@
 
 # TABLE OF INDEX
 
-1. [Learning Objecgives](##LearningObjectives)
+1. [Learning Objecgives](#learning-objectives)
 2. Setup
 3. CSRF Overview
 4. 

@@ -91,6 +91,35 @@ fetch("https://mailbox.thm/api/updateEmail", {
 4. The attacker now has access to the victim's emails.
 
 ## Basic CSRF Exploitation
+A covert technique known as hidden link/image exploitation in CSRF involves an attacker inserting a 0x0 pixel image or a link into a webpage that is nearly undetectable to the user.
+
+```html
+<!-- Website --> 
+<a href="https://mybank.thm/transfer.php" target="_blank">Click Here</a>  
+<!-- User visits attacker's website while authenticated -->
+```
+
+![image](https://github.com/user-attachments/assets/4bcd0b2e-b76c-4836-97f5-25364e1c3dcf)
+
+The insecure code from the application may look like this
+
+```php
+<?php 
+<form action="transfer.php" method="post">
+
+    <label for="to_account">To Account:</label>
+    <input type="text" id="to_account" name="to_account" required>
+
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" name="amount" required>
+
+    <button type="submit">Transfer</button>
+</form>
+```
+
+As we can see, there is no check for the CSRF token for every request made to the application.
+
+Hence, by using the hidden image technique, attackers are able to make unauthorized request on behalf of users.
 
 
 ## ANSWER THE QUESTIONS

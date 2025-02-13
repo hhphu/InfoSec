@@ -42,6 +42,7 @@ There are three phases of a CSRF attack:
 
 ## Types of CSRF attacks
 
+### Traditional CSRF
 - Traditional CSRF focuses on the state-changing of the application by submiting forms.
   
 ![image](https://github.com/user-attachments/assets/30bd5ff1-fed3-4244-a306-34d2bb04b5aa)
@@ -50,6 +51,43 @@ There are three phases of a CSRF attack:
 2. The attacker crafts a malicious link and send it to the user. This malicious link contains the actions the attacker wants to perform on the application under the user's identity.
 3. The user open the email on the same browser and clicks the link.
 4. The unauthorized action is performeed (transfering money to the attacker's account) using the victim's cookies.
+
+### XMLHttpRequest CSRF
+An asynchronous CSRF (Cross-Site Request Forgery) attack occurs when an attacker forces a victim’s browser to make an unauthorized request without requiring a full page reload. Instead of using a traditional HTML form submission, these attacks leverage JavaScript's XMLHttpRequest (XHR) or the Fetch API to send requests in the background—just like modern web applications do for smoother user experiences.
+
+Example: assume a user is using an email service `mailbox.thm`, which allows him/her to update email forwarding settings without refreshing the page. The service uses an API endpoint:
+
+```bash
+POST mailbox.thm/api/updateEmail
+```
+
+A legitimate request from a logged-in user might look like this:
+
+```javascript
+fetch("https://mailbox.thm/api/updateEmail", {
+  method: "POST",
+  credentials: "include",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ forwardTo: "mynewemail@example.com" })
+});
+```
+
+If the email service does not have CSRF protection, an attacker can exploit this behavior.
+
+1. The user logs into `mailbox.thm`, which results in the browser's storing an authenticated session cookie for `mailbox.thm`
+2. The attacker tricks the victim into clicking a malicious links, which executes JavaScript codes. The script may look like this:
+
+```javascript
+fetch("https://mailbox.thm/api/updateEmail", {
+  method: "POST",
+  credentials: "include",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ forwardTo: "attacker@example.com" })
+});
+```
+3. Since the web malcious web page is open in the same browser that stores the user's authenticated session cookie for `mailbox.thm`, the request is processed as if it's coming from a legitimate user.
+4. The attacker now has access to the victim's emails.
+
 
 ## ANSWER THE QUESTIONS
 

@@ -1,2 +1,3 @@
 - **[Advent of Cyber 2023](https://github.com/hhphu/thm-advent-of-cyber-2023.git)**
 - **[Advent of Cyber 2024](https://github.com/hhphu/thm-advent-of-cyber-2024.git)**
+- **[Attacking Defending AWS services](https://github.com/hhphu/thm-attacking-defending-aws)**

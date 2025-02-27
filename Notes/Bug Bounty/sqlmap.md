@@ -2,12 +2,12 @@
 
 # Table of Content
 -----
-- [Overview]
-- [Running SQLMap on an HTTP Request](Running%20SQLMap%20on%20an%20HTTP%20Request.md)
-- [Handling SQLMap Errors](Handling%20SQLMap%20Errors.md)
-- [Attack Tuning](Attack%20Tuning.md)
-- [SQLMap Enumeration](SQLMap%20Enumeration.md)
-- [Bypass Web Application Protections](Bypass%20Web%20Application%20Protection.md)
+- [Overview](#overview)
+- [Running SQLMap on an HTTP Request](#running-sqlmap-on-an-http-request)
+- [Handling SQLMap Errors](#handling-sqlmap-errors)
+- [Attack Tuning](#attack-tuning)
+- [SQLMap Enumeration](#sqlmap-enumeration)
+- [Bypass Web Application Protections](#bypass-web-application-protection)
   
 # Overview
 - SQLMap is a common tool that is used for automating the process of detecting and exploiting SQL Injection vulnerabilities.
@@ -21,7 +21,6 @@ sudo apt install sqlmap
 ```bash
 python sqlmap.py
 ```
-
 
 
 ## Supported Databases

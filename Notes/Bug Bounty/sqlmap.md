@@ -7,7 +7,7 @@
 - [Handling SQLMap Errors](#handling-sqlmap-errors)
 - [Attack Tuning](#attack-tuning)
 - [SQLMap Enumeration](#sqlmap-enumeration)
-- [Bypass Web Application Protections](#bypass-web-application-protection)
+- [Bypass Web Application Protections](#bypass-web-application-protections)
   
 # Overview
 - SQLMap is a common tool that is used for automating the process of detecting and exploiting SQL Injection vulnerabilities.
@@ -135,7 +135,7 @@ sqlmap -u "www.example.com/?q=test" --prefix="%'))" --suffix="-- -"
 
 - To tell the differences between the levels and the risks, use `-v 3`
 
-# Enumeration
+# SQLMap Enumeration
 
 ### Basic DB Enumeration
 - We can use multiple flags to retrieve the information about the target's DB.

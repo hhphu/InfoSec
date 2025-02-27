@@ -13,6 +13,14 @@ sudo apt install sqlmap
 python sqlmap.py
 ```
 
+# Table of Content
+-----
+- [Running SQLMap on an HTTP Request](Running%20SQLMap%20on%20an%20HTTP%20Request.md)
+- [Handling SQLMap Errors](Handling%20SQLMap%20Errors.md)
+- [Attack Tuning](Attack%20Tuning.md)
+- [SQLMap Enumeration](SQLMap%20Enumeration.md)
+- [Bypass Web Application Protections](Bypass%20Web%20Application%20Protection.md)
+
 ## Supported Databases
 SQLMap has the largest support for DBMSes of any other SQL exploitation tool. SQLMap fully supports the following DBMSes:
 
@@ -252,11 +260,3 @@ sqlmap -u "http://www.example.com/?id=1&h=c4ca4238a0b923820dcc509a6f75849b" --ev
 - To view the list of tamper script, use `--list-tampers`
 
 
-# Table of Content
------
-- [Running SQLMap on an HTTP Request](Running%20SQLMap%20on%20an%20HTTP%20Request.md)
-- [Handling SQLMap Errors](Handling%20SQLMap%20Errors.md)
-- [Attack Tuning](Attack%20Tuning.md)
-- [SQLMap Enumeration](SQLMap%20Enumeration.md)
-- [Bypass Web Application Protections](Bypass%20Web%20Application%20Protection.md)
-- [OS Exploitation](OS%20Exploitation.md)

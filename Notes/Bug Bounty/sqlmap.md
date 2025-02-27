@@ -2,12 +2,12 @@
 
 # Table of Content
 -----
-- [Overview](#overview)
-- [Running SQLMap on an HTTP Request](#running-sqlmap-on-an-http-request)
-- [Handling SQLMap Errors](#handling-sqlmap-errors)
-- [Attack Tuning](#attack-tuning)
-- [SQLMap Enumeration](#sqlmap-enumeration)
-- [Bypass Web Application Protections](#bypass-web-application-protections)
+- **[Overview](#overview)**
+- **[Running SQLMap on an HTTP Request](#running-sqlmap-on-an-http-request)**
+- **[Handling SQLMap Errors](#handling-sqlmap-errors)**
+- **[Attack Tuning](#attack-tuning)**
+- **[SQLMap Enumeration](#sqlmap-enumeration)**
+- **[Bypass Web Application Protections](#bypass-web-application-protections)**
   
 # Overview
 - SQLMap is a common tool that is used for automating the process of detecting and exploiting SQL Injection vulnerabilities.

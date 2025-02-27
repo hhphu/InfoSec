@@ -6,5 +6,6 @@
 - **[File Upload Attacks](file-upload-attacks.md)**
 - **[Hacking Wordpress](hacking-wordpress.md)**
 - **[HTTP Verbs Tampering](http-verbs-tampering.md)**
+- **[SQLMap](sqlmap.md)**
 - **[Web Requests](web-requests.md)**
 - **[XSS](xss.md)**

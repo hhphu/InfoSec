@@ -7,5 +7,6 @@
 - **[Hacking Wordpress](hacking-wordpress.md)**
 - **[HTTP Verbs Tampering](http-verbs-tampering.md)**
 - **[SQLMap](sqlmap.md)**
+- **[SSRF](ssrf.md)**
 - **[Web Requests](web-requests.md)**
 - **[XSS](xss.md)**

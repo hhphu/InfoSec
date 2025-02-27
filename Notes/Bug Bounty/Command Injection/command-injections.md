@@ -28,7 +28,31 @@ Command Injections stand out as one of the most critical vulnerabilities in the 
 #### Blacklisted Characters
 - If a commands contains a blocked special character, the application might deny the request.
 
-- To find out which character is allowed in the application, use BurpSuite to try each of the operators, which can be found [here](operators.txt) or their [url encoded verion](url-encoded-operators.txt).
+- To find out which character is allowed in the application, use BurpSuite to try each of the following operators:
+
+```bash
+;	
+\n	
+&	
+|
+&&
+||
+``
+$()
+```
+
+Their URL-encoded versions are:
+
+```bash
+%3b
+%0a
+%26
+%7c
+%26%26
+%7c%7c
+%60%60
+%24%28%29
+```
 
 ![](https://academy.hackthebox.com/storage/modules/109/cmdinj_filters_2.jpg)
 

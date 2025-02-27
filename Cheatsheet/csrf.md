@@ -67,3 +67,18 @@ csrf=RhV7yQDO0xcq9gLEah2WVbmuFqyOq7tY&email=wiener@normal-user.com
 ```
 **NOTE:** In this case, we assume the search function allows us to set cookies. We can do it directly in the developer tool.
 
+### CSRF token is tied to a non-session cookie
+Some applications have both csrf token in the session cookies and the request
+
+```bash
+POST /email/change HTTP/1.1
+Host: vulnerable-website.com
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 68
+Cookie: session=1DQGdzYbOJQzLP7460tfyiv3do7MjyPw; csrf=R8ov2YBfTYmzFyjit8o2hKBuoIjXXVpa
+
+csrf=R8ov2YBfTYmzFyjit8o2hKBuoIjXXVpa&email=wiener@normal-user.com
+```
+
+1. Here we can make up any value for the csrf, either through the Developer Tools or through some functionalities that allow us to set cookie.
+2. Deliver the payload (which has csrf set to the value we make up in step 1)

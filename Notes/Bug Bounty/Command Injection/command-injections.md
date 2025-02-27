@@ -20,7 +20,6 @@ Command Injections stand out as one of the most critical vulnerabilities in the 
 ![](https://academy.hackthebox.com/storage/modules/109/cmdinj_basic_repeater_2.jpg)
 
 ## Filters Evasion
------
 
 ### Identify filters
 - Filter/WAF Detection: when trying different operators (&, &&, |, ;), if we get errors from the web page, it means there's a filter in place to protect the application. If the error message displayed a different page, with information like our IP and our request, this may indicate that it was denied by a WAF.

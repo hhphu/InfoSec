@@ -78,7 +78,7 @@ In the response, we should see the `csrfKey` is set as we wish.
 ```
 **NOTE:** In this case, we assume the search function allows us to set cookies. We can do it directly in the developer tool.
 
-### CSRF token is tied to a non-session cookie
+### CSRF where token is duplicated in cookie
 Some applications have both csrf token in the session cookies and the request
 
 ```bash

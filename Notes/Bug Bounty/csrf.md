@@ -142,6 +142,7 @@ Payload
 </script>
 ```
 
+### Bypassing SameSite restrictions using on-site gadgets
 
 
 

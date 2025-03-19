@@ -4,6 +4,7 @@
 - **[Burp Suite CSRF PoF](#burp-suite-csrf-pof)**
 - **[Bypass CSRF Token Validation](#bypass-csrf-token-validation)**
 - **[Bypass SameSite Cookie Restriction](#bypass-samesite-cookie-restriction)**
+- **[Bypassing Referer-based CSRF defenses](#bypass-referer-based-csrf-defenses)**
 
 ## Burp Suite CSRF PoF 
 
@@ -165,6 +166,9 @@ A sample payload may look like this
 </script>
 ```
 **NOTE:** We use `window.onclick` to invole users' interaction as browsers block pop ups by default.
+
+## Bypassing Referer-based CSRF defenses
+
 
 
 

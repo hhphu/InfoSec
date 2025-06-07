@@ -29,7 +29,7 @@ THere are several places to look for:
 - These are errors messages displayed when users interact with the applications. "Users not found", "invalid token", "incorrect passwords" are amongst the most commonly used, which allows attackers to gain more information about the authentication process.
 
 To enumerate the email:
-1. Create a Python script `[script.py](script.py)`
+1. Create a Python script [script.py](script.py)
 
 
 2. Download the email list from this [repository](https://github.com/nyxgeek/username-lists/blob/master/usernames-top100/usernames_gmail.com.txt)

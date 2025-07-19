@@ -10,7 +10,8 @@ Command Injections stand out as one of the most critical vulnerabilities in the 
 #### Injecting Commands
 - Assume we have an application that ping an IP address, we can add another command after the IP
 
-![](https://academy.hackthebox.com/storage/modules/109/cmdinj_basic_injection.jpg)
+<img width="205" height="16" alt="image" src="https://github.com/user-attachments/assets/ae95a4c1-f059-42c0-ba87-6a8dde471851" />
+
 
 - As we can see the application refuses our inout. However, it looks like the input validation is done on the front-end (i.e in the 2 commands execute successfully). 
 

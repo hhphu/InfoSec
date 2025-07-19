@@ -10,7 +10,7 @@ Command Injections stand out as one of the most critical vulnerabilities in the 
 #### Injecting Commands
 - Assume we have an application that ping an IP address, we can add another command after the IP
 
-<img width="673" height="482" alt="image" src="https://github.com/user-attachments/assets/ed7030d7-5433-4fbc-b0d9-c70183d0baed" />
+<img width="647" height="436" alt="image" src="https://github.com/user-attachments/assets/c30eb249-6a93-4ca7-835a-800481200fb9" />
 
 
 - As we can see the application refuses our inout. However, it looks like the input validation is done on the front-end (i.e in the 2 commands execute successfully). 

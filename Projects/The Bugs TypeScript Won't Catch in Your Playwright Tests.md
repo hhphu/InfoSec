@@ -1,4 +1,4 @@
-## Auditing a Playwright POM Test Suite: Mistakes, Fixes, and Best Practices
+
 
 <img width="1376" height="768" alt="Gemini_Generated_Image_u88ur4u88ur4u88u" src="https://github.com/user-attachments/assets/0ed5593d-763c-48c5-9940-532b6e69a818" />
 

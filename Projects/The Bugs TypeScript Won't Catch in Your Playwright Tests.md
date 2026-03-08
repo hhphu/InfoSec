@@ -1,6 +1,7 @@
 # Auditing a Playwright POM Test Suite: Mistakes, Fixes, and Best Practices
 
-<img width="1376" height="768" alt="Gemini_Generated_Image_u88ur4u88ur4u88u" src="https://github.com/user-attachments/assets/74cd1373-ed96-4ccd-8778-aff80b76a739" />
+<img width="1376" height="768" alt="Gemini_Generated_Image_u88ur4u88ur4u88u" src="https://github.com/user-attachments/assets/0ed5593d-763c-48c5-9940-532b6e69a818" />
+
 
 When building a Playwright test suite using the Page Object Model (POM) pattern, it's easy to write code that *looks* correct but contains subtle bugs, inconsistencies, and silent failure modes that only surface at the worst possible time. This post walks through a real audit of a POM-based E2E suite for a registration and login flow, documenting every issue found and the reasoning behind each fix.
 
